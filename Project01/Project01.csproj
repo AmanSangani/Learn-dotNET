@@ -78,6 +78,7 @@
     <Content Include="Bootstrap\js\bootstrap.js" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="ServerControlDemo\Calc.aspx" />
+    <Content Include="ServerControlDemo\Result.aspx" />
     <Content Include="ServerControlDemo\TxtBoxDemo1.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
@@ -90,6 +91,13 @@
     </Compile>
     <Compile Include="ServerControlDemo\Calc.aspx.designer.cs">
       <DependentUpon>Calc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerControlDemo\Result.aspx.cs">
+      <DependentUpon>Result.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerControlDemo\Result.aspx.designer.cs">
+      <DependentUpon>Result.aspx</DependentUpon>
     </Compile>
     <Compile Include="ServerControlDemo\TxtBoxDemo1.aspx.cs">
       <DependentUpon>TxtBoxDemo1.aspx</DependentUpon>
