@@ -78,6 +78,8 @@
     <Content Include="Bootstrap\js\bootstrap.js" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="ServerControlDemo\Calc.aspx" />
+    <Content Include="ServerControlDemo\CheckBoxDemo.aspx" />
+    <Content Include="ServerControlDemo\RadioBtnDemo.aspx" />
     <Content Include="ServerControlDemo\Result.aspx" />
     <Content Include="ServerControlDemo\TxtBoxDemo1.aspx" />
     <Content Include="Web.config" />
@@ -91,6 +93,20 @@
     </Compile>
     <Compile Include="ServerControlDemo\Calc.aspx.designer.cs">
       <DependentUpon>Calc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerControlDemo\CheckBoxDemo.aspx.cs">
+      <DependentUpon>CheckBoxDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerControlDemo\CheckBoxDemo.aspx.designer.cs">
+      <DependentUpon>CheckBoxDemo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerControlDemo\RadioBtnDemo.aspx.cs">
+      <DependentUpon>RadioBtnDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerControlDemo\RadioBtnDemo.aspx.designer.cs">
+      <DependentUpon>RadioBtnDemo.aspx</DependentUpon>
     </Compile>
     <Compile Include="ServerControlDemo\Result.aspx.cs">
       <DependentUpon>Result.aspx</DependentUpon>
