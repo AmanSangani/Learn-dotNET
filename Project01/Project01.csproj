@@ -82,6 +82,7 @@
     <Content Include="ServerControlDemo\RadioBtnDemo.aspx" />
     <Content Include="ServerControlDemo\Result.aspx" />
     <Content Include="ServerControlDemo\TxtBoxDemo1.aspx" />
+    <Content Include="Tasks\Web01.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -121,6 +122,13 @@
     </Compile>
     <Compile Include="ServerControlDemo\TxtBoxDemo1.aspx.designer.cs">
       <DependentUpon>TxtBoxDemo1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\Web01.aspx.cs">
+      <DependentUpon>Web01.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\Web01.aspx.designer.cs">
+      <DependentUpon>Web01.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

@@ -11,7 +11,7 @@ namespace Project01.ServerControlDemo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            hlResult.Text = "Result";
         }
 
         protected void btnDisplay_Click(object sender, EventArgs e)

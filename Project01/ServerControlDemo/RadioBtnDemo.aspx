@@ -21,11 +21,11 @@
 
                 <asp:Label ID="lblDisplay" runat="server" EnableViewState="False"></asp:Label>
 
-                <asp:HyperLink ID="hlResult" runat="server" Text="Result" NavigateUrl="~/ServerControlDemo/Result.aspx" Target="_blank"></asp:HyperLink>
+                <asp:HyperLink ID="hlResult" runat="server" NavigateUrl="~/ServerControlDemo/Result.aspx" Target="_blank"></asp:HyperLink>
 
                 <br />
 
-                <asp:Image ID="imgLogo" runat="server" ImageUrl="https://images.pexels.com/photos/27438918/pexels-photo-27438918/free-photo-of-a-beach-with-rocks-and-sand-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" Height="424px" Width="640px" />
+                <asp:Image ID="imgLogo" runat="server" ImageUrl="https://images.pexels.com/photos/27438918/pexels-photo-27438918/free-photo-of-a-beach-with-rocks-and-sand-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" Height="424px" Width="640px" ToolTip="pexels | Logo" />
             </div>
         </div>
     </form>
