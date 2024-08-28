@@ -83,7 +83,8 @@
     <Content Include="ServerControlDemo\Result.aspx" />
     <Content Include="ServerControlDemo\TxtBoxDemo1.aspx" />
     <Content Include="ServerControlDemo\TypesOfButtons.aspx" />
-    <Content Include="Tasks\Web01.aspx" />
+    <Content Include="Tasks\RadioBtnTask.aspx" />
+    <Content Include="Tasks\HyperLinkTask.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
@@ -131,12 +132,19 @@
     <Compile Include="ServerControlDemo\TypesOfButtons.aspx.designer.cs">
       <DependentUpon>TypesOfButtons.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Tasks\Web01.aspx.cs">
-      <DependentUpon>Web01.aspx</DependentUpon>
+    <Compile Include="Tasks\RadioBtnTask.aspx.cs">
+      <DependentUpon>RadioBtnTask.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Tasks\Web01.aspx.designer.cs">
-      <DependentUpon>Web01.aspx</DependentUpon>
+    <Compile Include="Tasks\RadioBtnTask.aspx.designer.cs">
+      <DependentUpon>RadioBtnTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\HyperLinkTask.aspx.cs">
+      <DependentUpon>HyperLinkTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\HyperLinkTask.aspx.designer.cs">
+      <DependentUpon>HyperLinkTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
