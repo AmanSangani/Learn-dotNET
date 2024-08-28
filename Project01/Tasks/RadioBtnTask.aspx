@@ -23,16 +23,23 @@
             <asp:Button ID="btnGo" runat="server" Text="Go" OnClick="btnGo_Click" />
 
             <br />
-
-            <asp:Label ID="lblTest" runat="server"></asp:Label>
-
-            <br />
             <br />
 
             <h3>Select Your Branch :</h3>
             <asp:RadioButton ID="rbtnBranch1" runat="server" GroupName="Branch" Text="" Visible="False"/>
             &nbsp;&nbsp;&nbsp;
             <asp:RadioButton ID="rbtnBranch2" runat="server" GroupName="Branch" Text="" Visible="False"/>
+
+            <br />
+            <br />
+
+            <asp:Button ID="btnDispaly" runat="server" Text="Result" OnClick="btnDispaly_Click" />
+
+            <br />
+            <br />
+
+            <asp:Label ID="lblTest" runat="server" EnableViewState="False"></asp:Label>
+
         </div>
     </form>
 </body>

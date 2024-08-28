@@ -11,7 +11,7 @@ namespace Project01.Tasks
 {
 
 
-    public partial class RadioBtnTask
+    public partial class ChkBoxTask
     {
 
         /// <summary>
@@ -24,66 +24,75 @@ namespace Project01.Tasks
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// rbtnDEPSTAR control.
+        /// chkALl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnDEPSTAR;
+        protected global::System.Web.UI.WebControls.CheckBox chkALl;
 
         /// <summary>
-        /// rbtnCSPIT control.
+        /// chkNone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnCSPIT;
+        protected global::System.Web.UI.WebControls.CheckBox chkNone;
 
         /// <summary>
-        /// btnGo control.
+        /// chkReverse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGo;
+        protected global::System.Web.UI.WebControls.CheckBox chkReverse;
 
         /// <summary>
-        /// rbtnBranch1 control.
+        /// chkMaths control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnBranch1;
+        protected global::System.Web.UI.WebControls.CheckBox chkMaths;
 
         /// <summary>
-        /// rbtnBranch2 control.
+        /// chkPhysics control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbtnBranch2;
+        protected global::System.Web.UI.WebControls.CheckBox chkPhysics;
 
         /// <summary>
-        /// btnDispaly control.
+        /// chkChemistry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDispaly;
+        protected global::System.Web.UI.WebControls.CheckBox chkChemistry;
 
         /// <summary>
-        /// lblTest control.
+        /// btnDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTest;
+        protected global::System.Web.UI.WebControls.Button btnDisplay;
+
+        /// <summary>
+        /// lblResult control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResult;
     }
 }
