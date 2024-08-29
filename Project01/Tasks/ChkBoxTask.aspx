@@ -34,6 +34,35 @@
 
             <asp:Label ID="lblResult" runat="server"></asp:Label>
 
+            <br />
+
+        </div>
+        <div>
+            <h1>Select Your College :</h1>
+            <p>
+                <asp:CheckBox ID="chkDepstar" runat="server" Text="Depstar" />
+                <br />
+                <asp:CheckBox ID="chkCspit" runat="server" Text="Cspit" />
+            </p>
+            <asp:Button ID="btnGo" runat="server" Text="Go" OnClick="btnGo_Click" />
+            <p>
+                <asp:CheckBox ID="chkBranch1" runat="server" Visible="False" />
+            </p>
+            <p>
+                <asp:CheckBox ID="chkBranch2" runat="server" Visible="False" />
+            </p>
+            <p>
+                <asp:CheckBox ID="chkBranch3" runat="server" Visible="False" />
+            </p>
+            <p>
+                <asp:CheckBox ID="chkBranch4" runat="server" Visible="False" />
+            </p>
+            <asp:Button ID="btnResult" runat="server" Text="Result" Visible="False" OnClick="btnResult_Click" />
+
+            <br />
+            <br />
+
+            <asp:Label ID="lblClg" runat="server" EnableViewState="False"></asp:Label>
         </div>
     </form>
 </body>

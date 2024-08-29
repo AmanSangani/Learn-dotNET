@@ -72,5 +72,66 @@ namespace Project01.Tasks
             chkMaths.Checked = !chkMaths.Checked;
             chkPhysics.Checked = !chkPhysics.Checked;
         }
+
+        String str = "";
+
+        protected void btnGo_Click(object sender, EventArgs e)
+        {
+            if(chkCspit.Checked || chkDepstar.Checked)
+            {
+                btnResult.Visible = true;
+            }
+            else
+            {
+                btnResult.Visible = false;
+            }
+            if(chkDepstar.Checked)
+            {
+                chkBranch1.Text = "DCE";
+                chkBranch2.Text = "DCSE";
+
+                chkBranch1.Visible = true;
+                chkBranch2.Visible = true;
+            }
+            else
+            {
+                chkBranch1.Visible = false;
+                chkBranch2.Visible = false;
+            }
+            if (chkCspit.Checked)
+            {
+                chkBranch3.Text = "CE";
+                chkBranch4.Text = "CSE";
+
+                chkBranch3.Visible = true;
+                chkBranch4.Visible = true;
+            }
+            else
+            {
+                chkBranch3.Visible = false;
+                chkBranch4.Visible = false;
+            }
+        }
+
+        protected void btnResult_Click(object sender, EventArgs e)
+        {
+            if(chkBranch1.Checked)
+            {
+                str += " " + chkBranch1.Text;
+            }
+            if(chkBranch2.Checked)
+            {
+                str += " " + chkBranch2.Text;
+            }
+            if (chkBranch3.Checked)
+            {
+                str += " " + chkBranch3.Text;
+            }
+            if (chkBranch4.Checked)
+            {
+                str += " " + chkBranch4.Text;
+            }
+            lblClg.Text = str;  
+        }
     }
 }
