@@ -78,6 +78,7 @@
     <Content Include="Bootstrap\js\bootstrap.js" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="ListControl\DropDown.aspx" />
+    <Content Include="ListControl\ListBox.aspx" />
     <Content Include="ServerControlDemo\Calc.aspx" />
     <Content Include="ServerControlDemo\CheckBoxDemo.aspx" />
     <Content Include="ServerControlDemo\RadioBtnDemo.aspx" />
@@ -86,6 +87,7 @@
     <Content Include="ServerControlDemo\TypesOfButtons.aspx" />
     <Content Include="Tasks\ChkBoxTask.aspx" />
     <Content Include="Tasks\DropDownTask.aspx" />
+    <Content Include="Tasks\ListBoxTask.aspx" />
     <Content Include="Tasks\RadioBtnTask.aspx" />
     <Content Include="Tasks\HyperLinkTask.aspx" />
     <Content Include="Web.config" />
@@ -98,6 +100,13 @@
     </Compile>
     <Compile Include="ListControl\DropDown.aspx.designer.cs">
       <DependentUpon>DropDown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListControl\ListBox.aspx.cs">
+      <DependentUpon>ListBox.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListControl\ListBox.aspx.designer.cs">
+      <DependentUpon>ListBox.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerControlDemo\Calc.aspx.cs">
@@ -155,6 +164,13 @@
     </Compile>
     <Compile Include="Tasks\DropDownTask.aspx.designer.cs">
       <DependentUpon>DropDownTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\ListBoxTask.aspx.cs">
+      <DependentUpon>ListBoxTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\ListBoxTask.aspx.designer.cs">
+      <DependentUpon>ListBoxTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\RadioBtnTask.aspx.cs">
       <DependentUpon>RadioBtnTask.aspx</DependentUpon>
