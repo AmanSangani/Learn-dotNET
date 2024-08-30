@@ -77,6 +77,7 @@
     <Content Include="Bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Bootstrap\js\bootstrap.js" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
+    <Content Include="ListControl\BulletedListDemo.aspx" />
     <Content Include="ListControl\DropDown.aspx" />
     <Content Include="ListControl\ListBox.aspx" />
     <Content Include="ServerControlDemo\Calc.aspx" />
@@ -92,10 +93,18 @@
     <Content Include="Tasks\RadioBtnListTask.aspx" />
     <Content Include="Tasks\RadioBtnTask.aspx" />
     <Content Include="Tasks\HyperLinkTask.aspx" />
+    <Content Include="Tasks\ValidationControlTask.aspx" />
     <Content Include="Web.config" />
     <Content Include="ServerControlDemo\WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ListControl\BulletedListDemo.aspx.cs">
+      <DependentUpon>BulletedListDemo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListControl\BulletedListDemo.aspx.designer.cs">
+      <DependentUpon>BulletedListDemo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ListControl\DropDown.aspx.cs">
       <DependentUpon>DropDown.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -208,6 +217,13 @@
     </Compile>
     <Compile Include="ServerControlDemo\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\ValidationControlTask.aspx.cs">
+      <DependentUpon>ValidationControlTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\ValidationControlTask.aspx.designer.cs">
+      <DependentUpon>ValidationControlTask.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
