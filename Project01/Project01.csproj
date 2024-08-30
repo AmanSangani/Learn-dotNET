@@ -85,6 +85,7 @@
     <Content Include="ServerControlDemo\Result.aspx" />
     <Content Include="ServerControlDemo\TxtBoxDemo1.aspx" />
     <Content Include="ServerControlDemo\TypesOfButtons.aspx" />
+    <Content Include="Tasks\ChkBoxListTask.aspx" />
     <Content Include="Tasks\ChkBoxTask.aspx" />
     <Content Include="Tasks\DropDownTask.aspx" />
     <Content Include="Tasks\ListBoxTask.aspx" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="ServerControlDemo\TypesOfButtons.aspx.designer.cs">
       <DependentUpon>TypesOfButtons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tasks\ChkBoxListTask.aspx.cs">
+      <DependentUpon>ChkBoxListTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\ChkBoxListTask.aspx.designer.cs">
+      <DependentUpon>ChkBoxListTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks\ChkBoxTask.aspx.cs">
       <DependentUpon>ChkBoxTask.aspx</DependentUpon>
