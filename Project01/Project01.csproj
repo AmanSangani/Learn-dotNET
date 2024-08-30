@@ -89,10 +89,11 @@
     <Content Include="Tasks\ChkBoxTask.aspx" />
     <Content Include="Tasks\DropDownTask.aspx" />
     <Content Include="Tasks\ListBoxTask.aspx" />
+    <Content Include="Tasks\RadioBtnListTask.aspx" />
     <Content Include="Tasks\RadioBtnTask.aspx" />
     <Content Include="Tasks\HyperLinkTask.aspx" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="ServerControlDemo\WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ListControl\DropDown.aspx.cs">
@@ -180,6 +181,13 @@
     <Compile Include="Tasks\ListBoxTask.aspx.designer.cs">
       <DependentUpon>ListBoxTask.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tasks\RadioBtnListTask.aspx.cs">
+      <DependentUpon>RadioBtnListTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tasks\RadioBtnListTask.aspx.designer.cs">
+      <DependentUpon>RadioBtnListTask.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Tasks\RadioBtnTask.aspx.cs">
       <DependentUpon>RadioBtnTask.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -194,11 +202,11 @@
     <Compile Include="Tasks\HyperLinkTask.aspx.designer.cs">
       <DependentUpon>HyperLinkTask.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
+    <Compile Include="ServerControlDemo\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
+    <Compile Include="ServerControlDemo\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
