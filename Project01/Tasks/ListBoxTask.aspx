@@ -18,6 +18,17 @@
             <br />
             <br />
 
+            New Country Name :
+            <asp:TextBox ID="txtNewCountryName" runat="server"></asp:TextBox>
+            &nbsp;New Country Code :
+            <asp:TextBox ID="txtNewCountryCode" runat="server"></asp:TextBox>
+
+            &nbsp<asp:Button ID="btnUpdate" runat="server" Text="Update" OnClick="btnUpdate_Click" />
+
+
+            <br />
+            <br />
+
             <asp:Label ID="lblMsg" runat="server"></asp:Label>
 
             <hr />

@@ -110,5 +110,28 @@ namespace Project01.Tasks
                 lblMsg.Text = "No such Data...";
             }
         }
+
+        protected void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Boolean Update = false;
+            foreach (ListItem li in lstbCountry.Items)
+            {
+                if (li.Text == txtCountryName.Text && li.Value == txtCountryCode.Text)
+                {
+                    Update = true;
+                    break;
+                }
+            }
+            if (Update)
+            {
+                lstbCountry.Items.Remove(new ListItem(txtCountryName.Text, txtCountryCode.Text));
+                lstbCountry.Items.Add(new ListItem(txtNewCountryName.Text, txtNewCountryCode.Text));
+                lblMsg.Text = "Updated Successfully";
+            }
+            else
+            {
+                lblMsg.Text = "No such Data...";
+            }
+        }
     }
 }
