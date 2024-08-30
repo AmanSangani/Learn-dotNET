@@ -9,7 +9,20 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Country Name : <asp:TextBox ID="txtCountryName" runat="server"></asp:TextBox>
+            Country Code : <asp:TextBox ID="txtCountryCode" runat="server"></asp:TextBox>
+
+            &nbsp;<asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" />
+            <asp:Button ID="btnRemove" runat="server" Text="Remove" OnClick="btnRemove_Click" />
+
+            <br />
+            <br />
+
+            <asp:Label ID="lblMsg" runat="server"></asp:Label>
+
+            <hr />
             <table>
+
                 <tr>
                     <td>
                         <asp:ListBox ID="lstbCountry" runat="server" SelectionMode="Multiple">
@@ -27,6 +40,15 @@
                             
                         </asp:ListBox>
                     </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
                 </tr>
             </table>
         </div>
