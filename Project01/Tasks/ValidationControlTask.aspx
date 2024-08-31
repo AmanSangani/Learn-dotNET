@@ -1,5 +1,4 @@
-﻿
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ValidationControlTask.aspx.cs" Inherits="Project01.Tasks.ValidationControl" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ValidationControlTask.aspx.cs" Inherits="Project01.Tasks.ValidationControl" %>
 
 <!DOCTYPE html>
 

@@ -1,0 +1,80 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DemoMaster.Master.cs" Inherits="Project01.MasterPage.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <asp:ContentPlaceHolder ID="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div class="container">
+            <div class="row">
+
+                <%-- Header --%>
+                <div class="col-md-12 bg-danger">
+                   <div class="row">
+                        <div class="col-md-3">
+                            <h1></h1>
+                            <asp:Image ID="imgLogo" runat="server" SkinID="Logo" Width="254px" Height="48px" />
+                        </div>
+                        <div class="col-md-9 text-right">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h1>CHARUSAT UNIVERSITY</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="font-size:22px" class="col-md-12">
+                                    Changa-Valetva Road, Anand, Gujarat
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <asp:HyperLink ID="hlHome" runat="server" Text="Home" NavigateUrl="#"></asp:HyperLink>&nbsp;&nbsp; | &nbsp;&nbsp;
+                                    <asp:HyperLink ID="hlAbout" runat="server" Text="About" NavigateUrl="~/WebWithMasterPage/AboutPage.aspx"></asp:HyperLink>&nbsp;&nbsp; | &nbsp;&nbsp;
+                                    <asp:HyperLink ID="hlContact" runat="server" Text="Contact Us" NavigateUrl="~/WebWithMasterPage/ContactPage.aspx"></asp:HyperLink>&nbsp;&nbsp; | &nbsp;&nbsp
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <%-- Main Content --%>
+                <div class="col-md-12">
+                    <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+
+                    </asp:ContentPlaceHolder>
+                </div>
+
+                <%-- Footer --%>
+                <div class="col-md-12 bg-danger">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <asp:HyperLink ID="HyperLink1" runat="server" Text="Home"></asp:HyperLink>&nbsp;&nbsp; | &nbsp;&nbsp;
+                            <asp:HyperLink ID="HyperLink2" runat="server" Text="About"></asp:HyperLink>&nbsp;&nbsp; | &nbsp;&nbsp;
+                            <asp:HyperLink ID="HyperLink3" runat="server" Text="Contact Us"></asp:HyperLink>&nbsp;&nbsp; | &nbsp;&nbsp
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            CHARUSAT UNIVERSITY
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
