@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AddressBook.Master.cs" Inherits="AddressBook.Content.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Address-Book</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Optionally include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Bootstrap JS CDN -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <asp:ContentPlaceHolder ID="cphHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="bg-secondary">
+    <form id="form1" class="m-3" runat="server">
+        <div class="container">
+            <%-- Navbar --%>
+            
+             <div>
+                 <h1>Address Book</h1>
+                 <nav class="navbar navbar-expand-lg navbar-light bg-dark rounded">
+                     <asp:HyperLink ID="hlCountryList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Country/CountryList.aspx" Target="_self">Country List</asp:HyperLink>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <asp:HyperLink ID="hlCountryAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Country/CountryAddEdit.aspx" Target="_self">Country Add/Edit</asp:HyperLink>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                     <asp:HyperLink ID="hlStateList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="" Target="_self">State</asp:HyperLink>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <asp:HyperLink ID="hlStateAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="" Target="_self">State Add/Edit</asp:HyperLink>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                     <asp:HyperLink ID="hlCityList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="">City</asp:HyperLink>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <asp:HyperLink ID="hlCityAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="" Target="_self">City Add/Edit</asp:HyperLink>
+                 </nav>
+             </div>
+
+            <div>
+                <asp:ContentPlaceHolder ID="cphMainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <%-- Footer --%>
+            <footer class="bg-dark text-white mt-5 p-4 text-center">
+                <p>&copy; 2024 MyApp. All rights reserved.</p>
+            </footer>
+        </div>
+    </form>
+</body>
+</html>
