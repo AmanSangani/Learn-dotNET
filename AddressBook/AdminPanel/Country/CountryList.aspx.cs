@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +12,7 @@ using System.Data;
 
 namespace AddressBook.AdminPanel.Country
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class CountryList : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,8 +29,8 @@ namespace AddressBook.AdminPanel.Country
             {
                 //Open the Connection
                 connObj.Open();
-            
-                
+
+
                 //Step-2 : Do Your Work--------------------------------------------------------------------------------------
 
 
@@ -47,7 +49,7 @@ namespace AddressBook.AdminPanel.Country
                 cmdObj.CommandText = "PR_Country_SelectAll";
 
                 //Step-3 : Read and Display Data--------------------------------------------------------------------------------------
-                
+
                 //cmdObj.ExecuteReader(); //Selet Queries
                 //cmdObj.ExecuteNonQuery(); //Insert/Update/Delete
                 //cmdObj.ExecuteScalar(); //Only one Scalar Value is return
@@ -62,21 +64,16 @@ namespace AddressBook.AdminPanel.Country
             }
             catch (SqlException sqlEx)
             {
-                // Handle SQL exceptions separately if needed
                 Response.Write("SQL Error: " + sqlEx.Message);
             }
             catch (Exception ex)
             {
-                // Log or handle exceptions
                 Response.Write("Error: " + ex.Message);
             }
             finally
             {
                 // Close the Connection
-                if (connObj.State == ConnectionState.Open)
-                {
-                    connObj.Close();
-                }
+                connObj.Close();
             }
 
         }

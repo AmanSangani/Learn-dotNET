@@ -27,14 +27,14 @@
                      <asp:HyperLink ID="hlCountryAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Country/CountryAddEdit.aspx" Target="_self">Country Add/Edit</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                     <asp:HyperLink ID="hlStateList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="" Target="_self">State</asp:HyperLink>
+                     <asp:HyperLink ID="hlStateList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/States/StatesList.aspx" Target="_self">State</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <asp:HyperLink ID="hlStateAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="" Target="_self">State Add/Edit</asp:HyperLink>
+                     <asp:HyperLink ID="hlStateAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/States/StatesAddEdit.aspx" Target="_self">State Add/Edit</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                     <asp:HyperLink ID="hlCityList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="">City</asp:HyperLink>
+                     <asp:HyperLink ID="hlCityList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/City/CityList.aspx">City</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                     <asp:HyperLink ID="hlCityAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="" Target="_self">City Add/Edit</asp:HyperLink>
+                     <asp:HyperLink ID="hlCityAddEdit" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/City/CityAddEdit.aspx" Target="_self">City Add/Edit</asp:HyperLink>
                  </nav>
              </div>
 
