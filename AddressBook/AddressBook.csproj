@@ -69,8 +69,8 @@
   <ItemGroup>
     <Content Include="AdminPanel\City\CityAddEdit.aspx" />
     <Content Include="AdminPanel\City\CityList.aspx" />
-    <Content Include="AdminPanel\Country\CountryList.aspx" />
     <Content Include="AdminPanel\Country\CountryAddEdit.aspx" />
+    <Content Include="AdminPanel\Country\CountryList.aspx" />
     <Content Include="AdminPanel\States\StatesAddEdit.aspx" />
     <Content Include="AdminPanel\States\StatesList.aspx" />
     <Content Include="Content\css\bootstrap-grid.css" />
@@ -101,19 +101,19 @@
     <Compile Include="AdminPanel\City\CityList.aspx.designer.cs">
       <DependentUpon>CityList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminPanel\Country\CountryList.aspx.cs">
-      <DependentUpon>CountryList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminPanel\Country\CountryList.aspx.designer.cs">
-      <DependentUpon>CountryList.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AdminPanel\Country\CountryAddEdit.aspx.cs">
       <DependentUpon>CountryAddEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdminPanel\Country\CountryAddEdit.aspx.designer.cs">
       <DependentUpon>CountryAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Country\CountryList.aspx.cs">
+      <DependentUpon>CountryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Country\CountryList.aspx.designer.cs">
+      <DependentUpon>CountryList.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPanel\States\StatesAddEdit.aspx.cs">
       <DependentUpon>StatesAddEdit.aspx</DependentUpon>
