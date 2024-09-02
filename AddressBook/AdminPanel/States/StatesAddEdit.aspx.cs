@@ -14,6 +14,47 @@ namespace AddressBook.AdminPanel.States
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                FillDropDownList();
+            }
+        }
+
+        private void FillDropDownList()
+        {
+            SqlConnection connObj = new SqlConnection("data source=AMAN;initial catalog=AddressBook;Integrated Security=True;");
+            try
+            {
+                connObj.Open();
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+
+                cmdObj.CommandType = CommandType.StoredProcedure;
+
+                cmdObj.CommandText = "PR_Country_SelectForDropDownList";
+
+                SqlDataReader sdrObj = cmdObj.ExecuteReader();
+
+                if (sdrObj.HasRows)
+                {
+                    ddlCountryCode.DataSource = sdrObj;
+                    ddlCountryCode.DataValueField = "CountryCode";
+                    ddlCountryCode.DataTextField = "CountryName";
+                    ddlCountryCode.DataBind();
+                }
+
+                ddlCountryCode.Items.Insert(0, new ListItem("Select Country", "-1"));
+
+                connObj.Close();
+            }
+            catch (SqlException sqlEx)
+            {
+                Response.Write("Error: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
 
         }
         protected void btnSave_Click(object sender, EventArgs e)
@@ -25,11 +66,17 @@ namespace AddressBook.AdminPanel.States
             SqlString strStateCapital = SqlString.Null;
             SqlString strCountryCode = SqlString.Null;
 
+            if(ddlCountryCode.SelectedValue == "-1")
+            {
+                lblMsj.Text += "Select Country...";
+                return;
+            }
+
             if (
                 txtStateCode.Text.Trim() == "" || 
                 txtStateName.Text.Trim() == "" ||
-                txtStateCapital.Text.Trim() == "" || 
-                txtCountryCode.Text.Trim() == ""
+                txtStateCapital.Text.Trim() == "" ||
+                ddlCountryCode.SelectedValue.Trim() == ""
             )
             {
                 lblMsj.Text += "Enter Required Fields...";
@@ -59,7 +106,7 @@ namespace AddressBook.AdminPanel.States
                 strStateCode = txtStateCode.Text.Trim();
                 strStateName = txtStateName.Text.Trim();
                 strStateCapital = txtStateCapital.Text.Trim();
-                strCountryCode = txtCountryCode.Text.Trim();
+                strCountryCode = ddlCountryCode.SelectedValue.Trim();
 
                 cmdObj.Parameters.AddWithValue("@StateCode", strStateCode);
                 cmdObj.Parameters.AddWithValue("@StateName", strStateName);

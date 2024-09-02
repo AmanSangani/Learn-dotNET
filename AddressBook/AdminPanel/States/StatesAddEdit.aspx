@@ -19,6 +19,11 @@
     </div>
     <div class="row">
         <div class="col-md-3">
+            <asp:Label ID="lblCountryCode" runat="server" Text="Country Name : "></asp:Label>
+            <asp:RequiredFieldValidator ID="rfvCountryCode" runat="server" ErrorMessage="**" ControlToValidate="ddlCountryCode" Display="Dynamic" ForeColor="Red" InitialValue="-1"></asp:RequiredFieldValidator>
+            <asp:DropDownList ID="ddlCountryCode" CssClass="form-control" runat="server"></asp:DropDownList>
+        </div>
+        <div class="col-md-3">
             <asp:Label ID="lblStateCode" runat="server" Text="State Code : "></asp:Label>
             <asp:RequiredFieldValidator ID="rfvStateCode" runat="server" ErrorMessage="**" ControlToValidate="txtStateCode" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
             <asp:TextBox ID="txtStateCode" CssClass="form-control" runat="server"></asp:TextBox>
@@ -32,11 +37,6 @@
             <asp:Label ID="lblStateCpaital" runat="server" Text="State Capital : "></asp:Label>
             <asp:RequiredFieldValidator ID="rfvStateCapital" runat="server" ErrorMessage="**" ControlToValidate="txtStateCapital" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
             <asp:TextBox ID="txtStateCapital" CssClass="form-control" runat="server"></asp:TextBox>
-        </div>
-        <div class="col-md-3">
-            <asp:Label ID="lblCountryCode" runat="server" Text="Country Code : "></asp:Label>
-            <asp:RequiredFieldValidator ID="rfvCountryCode" runat="server" ErrorMessage="**" ControlToValidate="txtCountryCode" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-            <asp:TextBox ID="txtCountryCode" CssClass="form-control" runat="server"></asp:TextBox>
         </div>
     </div>
     <div class="row">

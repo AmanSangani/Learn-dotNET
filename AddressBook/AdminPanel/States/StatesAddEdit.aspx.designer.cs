@@ -24,6 +24,33 @@ namespace AddressBook.AdminPanel.States
         protected global::System.Web.UI.WebControls.Label lblMsj;
 
         /// <summary>
+        /// lblCountryCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCountryCode;
+
+        /// <summary>
+        /// rfvCountryCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountryCode;
+
+        /// <summary>
+        /// ddlCountryCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountryCode;
+
+        /// <summary>
         /// lblStateCode control.
         /// </summary>
         /// <remarks>
@@ -103,33 +130,6 @@ namespace AddressBook.AdminPanel.States
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtStateCapital;
-
-        /// <summary>
-        /// lblCountryCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCountryCode;
-
-        /// <summary>
-        /// rfvCountryCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCountryCode;
-
-        /// <summary>
-        /// txtCountryCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCountryCode;
 
         /// <summary>
         /// btnSave control.
