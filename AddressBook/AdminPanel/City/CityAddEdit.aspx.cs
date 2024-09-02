@@ -14,7 +14,84 @@ namespace AddressBook.AdminPanel.City
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                FillCountryDropDownList();
+                //FillStateDropDownList();
+            }
+        }
 
+        private void FillCountryDropDownList()
+        {
+            SqlConnection connObj = new SqlConnection("data source=AMAN;initial catalog=AddressBook;Integrated Security=True;");
+            try
+            {
+                connObj.Open();
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+                cmdObj.CommandType = CommandType.StoredProcedure;
+                cmdObj.CommandText = "PR_Country_SelectForDropDownList";
+                SqlDataReader sdrObj = cmdObj.ExecuteReader();
+                
+                if (sdrObj.HasRows)
+                {
+                    ddlCountryCode.DataSource = sdrObj;
+                    ddlCountryCode.DataValueField = "CountryCode";
+                    ddlCountryCode.DataTextField = "CountryName";
+                    ddlCountryCode.DataBind();
+                }
+                ddlCountryCode.Items.Insert(0, new ListItem("Select Country", "-1"));
+
+            }
+            catch (SqlException sqlEx)
+            {
+                Response.Write("Error: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            finally
+            {
+                connObj.Close();
+            }
+        }
+
+        private void FillStateDropDownList(SqlString str)
+        {
+            SqlConnection connObj = new SqlConnection("data source=AMAN;initial catalog=AddressBook;Integrated Security=True;");
+            try
+            {
+                connObj.Open();
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+                cmdObj.CommandType = CommandType.StoredProcedure;
+                cmdObj.CommandText = "PR_States_SelectForDropDownList";
+                cmdObj.Parameters.AddWithValue("@CountryCode", str.ToString());
+                SqlDataReader sdrObj = cmdObj.ExecuteReader();
+
+                if (sdrObj.HasRows)
+                {
+                    ddlStateName.DataSource = sdrObj;
+                    ddlStateName.DataValueField = "StateCode";
+                    ddlStateName.DataTextField = "StateName";
+                    ddlStateName.DataBind();
+                }
+                ddlStateName.Items.Insert(0, new ListItem("Select State", "-1"));
+
+            }
+            catch (SqlException sqlEx)
+            {
+                Response.Write("Error: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            finally
+            {
+                connObj.Close();
+            }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -27,10 +104,17 @@ namespace AddressBook.AdminPanel.City
             if (
                 txtCityCode.Text.Trim() == "" ||
                 txtCityName.Text.Trim() == "" ||
-                txtStateCode.Text.Trim() == ""
+                ddlStateName.SelectedValue.Trim() == ""
             )
             {
                 lblMsj.Text += "Enter Required Fields...";
+                return;
+            }
+
+
+            if (ddlCountryCode.SelectedValue == "-1")
+            {
+                lblMsj.Text += "Select Country...";
                 return;
             }
 
@@ -56,7 +140,7 @@ namespace AddressBook.AdminPanel.City
 
                 strCityCode = txtCityCode.Text.Trim();
                 strCityName = txtCityName.Text.Trim();
-                strStateCode = txtStateCode.Text.Trim();
+                strStateCode = ddlStateName.SelectedValue.Trim();
 
                 cmdObj.Parameters.AddWithValue("@CityCode", strCityCode);
                 cmdObj.Parameters.AddWithValue("@CityName", strCityName);
@@ -80,10 +164,32 @@ namespace AddressBook.AdminPanel.City
 
                 txtCityCode.Text = "";
                 txtCityName.Text = "";
-                txtStateCode.Text = "";
 
                 txtCityCode.Focus();
             }
+        }
+
+        protected void ddlCountryCode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //ddlStateName.DataSource = null;
+            //ddlStateName.DataBind();
+
+            SqlString str = SqlString.Null;
+
+            str = ddlCountryCode.SelectedValue;
+            
+            lblMsj.Text = str.ToString();
+
+            FillStateDropDownList(str);
+        }
+        protected void btnTemp_Click(object sender, EventArgs e)
+        {
+            SqlString str = SqlString.Null;
+
+            str = ddlStateName.SelectedValue;
+
+            lblMsj.Text = str.ToString();
         }
     }
 }
