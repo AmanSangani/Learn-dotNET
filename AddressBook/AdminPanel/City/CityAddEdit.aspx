@@ -26,8 +26,7 @@
         <div class="col-md-3">
             <asp:Label ID="lblStateName" runat="server" Text="State Name : "></asp:Label>
             <asp:RequiredFieldValidator ID="rfvStateName" runat="server" ErrorMessage="**" ControlToValidate="ddlStateName" Display="Dynamic" ForeColor="Red" InitialValue="-1"></asp:RequiredFieldValidator>
-            <asp:DropDownList ID="ddlStateName" CssClass="form-control" runat="server" EnableViewState="False"></asp:DropDownList>
-            <asp:Button ID="btnTemp" runat="server" Text="Button" OnClick="btnTemp_Click" />
+            <asp:DropDownList ID="ddlStateName" CssClass="form-control" runat="server"></asp:DropDownList>
         </div>
         <div class="col-md-3">
             <asp:Label ID="lblCityCode" runat="server" Text="City Code : "></asp:Label>

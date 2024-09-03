@@ -17,7 +17,6 @@ namespace AddressBook.AdminPanel.City
             if (!Page.IsPostBack)
             {
                 FillCountryDropDownList();
-                //FillStateDropDownList();
             }
         }
 
@@ -172,24 +171,13 @@ namespace AddressBook.AdminPanel.City
         protected void ddlCountryCode_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            //ddlStateName.DataSource = null;
-            //ddlStateName.DataBind();
+            ddlStateName.Items.Clear();
 
             SqlString str = SqlString.Null;
 
             str = ddlCountryCode.SelectedValue;
             
-            lblMsj.Text = str.ToString();
-
             FillStateDropDownList(str);
-        }
-        protected void btnTemp_Click(object sender, EventArgs e)
-        {
-            SqlString str = SqlString.Null;
-
-            str = ddlStateName.SelectedValue;
-
-            lblMsj.Text = str.ToString();
         }
     }
 }
