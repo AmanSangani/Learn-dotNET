@@ -9,6 +9,8 @@ using System.Web.UI.WebControls;
 
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
+using System.Data.SqlTypes;
 
 namespace AddressBook.AdminPanel.Country
 {
@@ -16,11 +18,19 @@ namespace AddressBook.AdminPanel.Country
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                FillGridView();
+            }
+        }
+
+        private void FillGridView()
+        {
             // Step-1: Establish Connection--------------------------------------------------------------------------------------
             SqlConnection connObj = new SqlConnection();
 
             // Option 1: Using Windows Authentication
-            connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
+            connObj.ConnectionString = ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString;
 
             // Option 2: Using SQL Server Authentication
             // connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=False;User ID=yourUsername;Password=yourPassword;";
@@ -75,6 +85,63 @@ namespace AddressBook.AdminPanel.Country
                 // Close the Connection
                 connObj.Close();
             }
+        }
+
+        protected void gvCountry_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "DeleteRecord")
+            {
+                if(e.CommandArgument != "")
+                {
+                    DeleteCountryRecord(e.CommandArgument.ToString().Trim());
+                }
+            }
+            if (e.CommandName == "EditRecord")
+            {
+                if (e.CommandArgument != "")
+                {
+                    EditCountryRecord();
+                }
+            }
+        }
+
+        private void DeleteCountryRecord(SqlString CountryCode)
+        {
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
+
+            try
+            {
+                connObj.Open();
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+
+                cmdObj.CommandType = CommandType.StoredProcedure;
+
+                cmdObj.CommandText = "PR_Country_DeleteByPK";
+
+                cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode);
+
+                cmdObj.ExecuteNonQuery();
+
+                FillGridView();
+
+            }
+            catch (SqlException sqlEx)
+            {
+                Response.Write("SQL Error: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            finally
+            {
+                connObj.Close();
+            }
+        }
+
+        private void EditCountryRecord()
+        {
 
         }
     }

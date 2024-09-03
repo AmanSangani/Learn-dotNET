@@ -42,15 +42,6 @@ namespace AddressBook.Content
         protected global::System.Web.UI.WebControls.HyperLink hlCountryList;
 
         /// <summary>
-        /// hlCountryAddEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCountryAddEdit;
-
-        /// <summary>
         /// hlStateList control.
         /// </summary>
         /// <remarks>
@@ -60,15 +51,6 @@ namespace AddressBook.Content
         protected global::System.Web.UI.WebControls.HyperLink hlStateList;
 
         /// <summary>
-        /// hlStateAddEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlStateAddEdit;
-
-        /// <summary>
         /// hlCityList control.
         /// </summary>
         /// <remarks>
@@ -76,15 +58,6 @@ namespace AddressBook.Content
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlCityList;
-
-        /// <summary>
-        /// hlCityAddEdit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlCityAddEdit;
 
         /// <summary>
         /// cphMainContent control.

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace AddressBook.AdminPanel.States
 {
@@ -22,7 +23,7 @@ namespace AddressBook.AdminPanel.States
 
         private void FillDropDownList()
         {
-            SqlConnection connObj = new SqlConnection("data source=AMAN;initial catalog=AddressBook;Integrated Security=True;");
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
             try
             {
                 connObj.Open();
@@ -83,7 +84,7 @@ namespace AddressBook.AdminPanel.States
                 return;
             }
 
-            SqlConnection connObj = new SqlConnection("data source=AMAN;initial catalog=AddressBook;Integrated Security=True;");
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
 
             //connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
 

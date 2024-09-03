@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
@@ -15,6 +16,14 @@ namespace AddressBook.AdminPanel.Country
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            if (Request.QueryString["CountryCode"] != null)
+            {
+                lblMsj.Text = "Edit Mode..." + Request.QueryString["CountryCode"].ToString().Trim();
+            }
+            else
+            {
+                lblMsj.Text = "Add Mode...";
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -31,7 +40,7 @@ namespace AddressBook.AdminPanel.Country
                 return;
             }
 
-            SqlConnection connObj = new SqlConnection("data source=AMAN;initial catalog=AddressBook;Integrated Security=True;");
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
 
             //connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
 

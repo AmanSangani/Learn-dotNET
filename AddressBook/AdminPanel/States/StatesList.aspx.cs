@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 
 namespace AddressBook.AdminPanel.States
@@ -17,7 +18,9 @@ namespace AddressBook.AdminPanel.States
         {
             SqlConnection connObj = new SqlConnection();
 
-            connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
+            //connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
+            //--------OR------------------
+            connObj.ConnectionString = ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString;
 
             try
             {

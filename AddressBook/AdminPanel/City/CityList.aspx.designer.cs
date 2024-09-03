@@ -15,6 +15,15 @@ namespace AddressBook.AdminPanel.City
     {
 
         /// <summary>
+        /// hlCityAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlCityAdd;
+
+        /// <summary>
         /// gvCity control.
         /// </summary>
         /// <remarks>
