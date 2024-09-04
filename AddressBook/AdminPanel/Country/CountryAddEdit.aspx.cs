@@ -15,14 +15,12 @@ namespace AddressBook.AdminPanel.Country
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Request.QueryString["CountryCode"] != null)
+            if (!Page.IsPostBack)
             {
-                lblMsj.Text = "Edit Mode..." + Request.QueryString["CountryCode"].ToString().Trim();
-            }
-            else
-            {
-                lblMsj.Text = "Add Mode...";
+                if (Request.QueryString["CountryCode"] != null)
+                {
+                    FillControls(Request.QueryString["CountryCode"].ToString().Trim());
+                }
             }
         }
 
@@ -34,7 +32,7 @@ namespace AddressBook.AdminPanel.Country
             SqlString strCountryName = SqlString.Null;
             SqlString strCountryCapital = SqlString.Null;
 
-            if(txtCountryCode.Text.Trim() == "" || txtCountryName.Text.Trim() == "" || txtCountryCapital.Text.Trim() == "")
+            if (txtCountryCode.Text.Trim() == "" || txtCountryName.Text.Trim() == "" || txtCountryCapital.Text.Trim() == "")
             {
                 lblMsj.Text += "Enter Required Fields...";
                 return;
@@ -46,7 +44,10 @@ namespace AddressBook.AdminPanel.Country
 
             try
             {
-                connObj.Open();
+                if (connObj.State != ConnectionState.Open)
+                {
+                    connObj.Open();
+                }
 
                 //SqlCommand cmdObj = new SqlCommand();
                 //cmdObj.Connection = connObj;
@@ -58,8 +59,6 @@ namespace AddressBook.AdminPanel.Country
 
                 cmdObj.CommandType = CommandType.StoredProcedure;
 
-                cmdObj.CommandText = "PR_Country_Insert";
-
                 strCountryCode = txtCountryCode.Text.Trim();
                 strCountryName = txtCountryName.Text.Trim();
                 strCountryCapital = txtCountryCapital.Text.Trim();
@@ -68,8 +67,26 @@ namespace AddressBook.AdminPanel.Country
                 cmdObj.Parameters.AddWithValue("@CountryName", strCountryName);
                 cmdObj.Parameters.AddWithValue("@CountryCapital", strCountryCapital);
 
-                cmdObj.ExecuteNonQuery();
+                if (Request.QueryString["CountryCode"] != null)
+                {
+                    //Edit Mode
+                    cmdObj.CommandText = "PR_Country_UpdateByPK";
+                    cmdObj.ExecuteNonQuery();
+                    Response.Redirect("~/AdminPanel/Country/CountryList.aspx");
+                }
+                else
+                {
+                    //Add Mode
+                    cmdObj.CommandText = "PR_Country_Insert";
+                    cmdObj.ExecuteNonQuery();
+                    lblMsj.Text = "Data Inserted Successfully...";
 
+                    txtCountryCode.Text = "";
+                    txtCountryName.Text = "";
+                    txtCountryCapital.Text = "";
+
+                    txtCountryCode.Focus();
+                }
             }
             catch (SqlException sqlEx) 
             {
@@ -81,14 +98,74 @@ namespace AddressBook.AdminPanel.Country
             }
             finally
             {
-                connObj.Close();
-                lblMsj.Text = "Data Inserted Successfully...";
+                if (connObj.State == ConnectionState.Open)
+                {
+                    connObj.Close();
+                }
+            }
+        }
 
-                txtCountryCode.Text = "";
-                txtCountryName.Text = "";
-                txtCountryCapital.Text = "";
+        private void FillControls(SqlString CountryCode)
+        {
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
 
-                txtCountryCode.Focus();
+            try
+            {
+                if (connObj.State != ConnectionState.Open)
+                {
+                    connObj.Open();
+                }
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+
+                cmdObj.CommandType = CommandType.StoredProcedure;
+
+                cmdObj.CommandText = "PR_Country_SelectByPK";
+
+                cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode.ToString().Trim());
+
+                SqlDataReader sdrObj = cmdObj.ExecuteReader();
+
+                if(sdrObj.HasRows)
+                {
+                    while (sdrObj.Read())
+                    {
+                        if (!sdrObj["CountryCode"].Equals(DBNull.Value))
+                        {
+                            txtCountryCode.Text = sdrObj["CountryCode"].ToString();
+                            txtCountryCode.ReadOnly = true;
+                        }
+                        if (!sdrObj["CountryName"].Equals(DBNull.Value))
+                        {
+                            txtCountryName.Text = sdrObj["CountryName"].ToString();
+                        }
+                        if (!sdrObj["CountryCapital"].Equals(DBNull.Value))
+                        {
+                            txtCountryCapital.Text = sdrObj["CountryCapital"].ToString();
+                        }
+                        break;
+                    }
+                }
+                else
+                {
+                    lblMsj.Text += "No Data for selected Country : " + CountryCode.ToString();
+                }
+
+            }
+            catch(SqlException sqlEx)
+            {
+                Response.Write("Sql Exception: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            finally
+            {
+                if(connObj.State == ConnectionState.Open)
+                {
+                    connObj.Close();
+                }
             }
         }
     }
