@@ -13,6 +13,7 @@ namespace AddressBook.AdminPanel.States
 {
     public partial class StatesAddEdit : System.Web.UI.Page
     {
+        #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -20,12 +21,20 @@ namespace AddressBook.AdminPanel.States
                 FillDropDownList();
             }
         }
+        #endregion Page Load
 
+        #region Fill DropDown List
         private void FillDropDownList()
         {
+            #region Establish Connection
             SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
+            #endregion Establish Connection
+
             try
             {
+
+                #region Connection And Command
+
                 connObj.Open();
 
                 SqlCommand cmdObj = connObj.CreateCommand();
@@ -33,6 +42,10 @@ namespace AddressBook.AdminPanel.States
                 cmdObj.CommandType = CommandType.StoredProcedure;
 
                 cmdObj.CommandText = "PR_Country_SelectForDropDownList";
+
+                #endregion Connection And Command
+
+                #region Data Read and Bind
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
@@ -46,8 +59,10 @@ namespace AddressBook.AdminPanel.States
 
                 ddlCountryCode.Items.Insert(0, new ListItem("Select Country", "-1"));
 
-                connObj.Close();
+                #endregion Data Read and Bind
+
             }
+            #region Exception Handling
             catch (SqlException sqlEx)
             {
                 Response.Write("Error: " + sqlEx.Message);
@@ -56,18 +71,31 @@ namespace AddressBook.AdminPanel.States
             {
                 Response.Write("Error: " + ex.Message);
             }
+            #endregion Exception Handling
+
+            #region Close Connection
+            finally
+            {
+                connObj.Close();
+            }
+            #endregion Close Connection
 
         }
+        #endregion Fill DropDown List
+
+        #region Button : Save
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            #region Declare Local Variables
             //Declare Local Varialble to Insert Data
             SqlString strStateCode = SqlString.Null;
             SqlString strStateName = SqlString.Null;
             SqlString strStateCapital = SqlString.Null;
             SqlString strCountryCode = SqlString.Null;
+            #endregion Declare Local Variables
 
-            if(ddlCountryCode.SelectedValue == "-1")
+            #region ServerSide Validation
+            if (ddlCountryCode.SelectedValue == "-1")
             {
                 lblMsj.Text += "Select Country...";
                 return;
@@ -83,13 +111,16 @@ namespace AddressBook.AdminPanel.States
                 lblMsj.Text += "Enter Required Fields...";
                 return;
             }
+            #endregion ServerSide Validation
 
+            #region Establish Connection
             SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
-
             //connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
+            #endregion Establish Connection
 
             try
             {
+                #region Connection and Command Objects
                 connObj.Open();
 
                 //SqlCommand cmdObj = new SqlCommand();
@@ -101,6 +132,9 @@ namespace AddressBook.AdminPanel.States
 
 
                 cmdObj.CommandType = CommandType.StoredProcedure;
+                #endregion Connection and Command Objects
+
+                #region Store Procedure, Parameters and Execute
 
                 cmdObj.CommandText = "PR_States_Insert";
 
@@ -116,7 +150,10 @@ namespace AddressBook.AdminPanel.States
 
                 cmdObj.ExecuteNonQuery();
 
+                #endregion Store Procedure, Parameters and Execute
+
             }
+            #region Exception Handling
             catch (SqlException sqlEx)
             {
                 Response.Write("Error: " + sqlEx.Message);
@@ -125,6 +162,9 @@ namespace AddressBook.AdminPanel.States
             {
                 Response.Write("Error: " + ex.Message);
             }
+            #endregion Exception Handling
+
+            #region Close Connection
             finally
             {
                 connObj.Close();
@@ -136,6 +176,13 @@ namespace AddressBook.AdminPanel.States
 
                 txtStateCode.Focus();
             }
+            #endregion Close Connection
+
         }
+
+        #endregion Button : Save
+
     }
 }
+
+
