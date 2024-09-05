@@ -13,6 +13,8 @@ namespace AddressBook.AdminPanel.Country
 {
     public partial class CountryAddEdit : System.Web.UI.Page
     {
+
+        #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -24,26 +26,35 @@ namespace AddressBook.AdminPanel.Country
             }
         }
 
+        #endregion Page Load
+
+        #region Button : Save
         protected void btnSave_Click(object sender, EventArgs e)
         {
-
+            #region Declare Local Variables
             //Declare Local Varialble to Insert Data
             SqlString strCountryCode = SqlString.Null;
             SqlString strCountryName = SqlString.Null;
             SqlString strCountryCapital = SqlString.Null;
+            #endregion Declare Local Variables
 
+            #region Server Side Validation
             if (txtCountryCode.Text.Trim() == "" || txtCountryName.Text.Trim() == "" || txtCountryCapital.Text.Trim() == "")
             {
                 lblMsj.Text += "Enter Required Fields...";
                 return;
             }
+            #endregion Server Side Validation
 
+            #region Establish Connection
             SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
 
             //connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=True;";
+            #endregion Establish Connection
 
             try
             {
+                #region Connection and Command Objects
                 if (connObj.State != ConnectionState.Open)
                 {
                     connObj.Open();
@@ -56,8 +67,11 @@ namespace AddressBook.AdminPanel.Country
 
                 SqlCommand cmdObj = connObj.CreateCommand();
 
-
                 cmdObj.CommandType = CommandType.StoredProcedure;
+
+                #endregion Connection and Command Objects
+
+                #region Parameters
 
                 strCountryCode = txtCountryCode.Text.Trim();
                 strCountryName = txtCountryName.Text.Trim();
@@ -67,16 +81,24 @@ namespace AddressBook.AdminPanel.Country
                 cmdObj.Parameters.AddWithValue("@CountryName", strCountryName);
                 cmdObj.Parameters.AddWithValue("@CountryCapital", strCountryCapital);
 
+                #endregion Parameters
+
+                #region Add-Mode / Edit-Mode
+
                 if (Request.QueryString["CountryCode"] != null)
                 {
-                    //Edit Mode
+                    #region Edit-Mode
+
                     cmdObj.CommandText = "PR_Country_UpdateByPK";
                     cmdObj.ExecuteNonQuery();
                     Response.Redirect("~/AdminPanel/Country/CountryList.aspx");
+
+                    #endregion Edit-Mode
                 }
                 else
                 {
-                    //Add Mode
+                    #region Add-Mode
+                    
                     cmdObj.CommandText = "PR_Country_Insert";
                     cmdObj.ExecuteNonQuery();
                     lblMsj.Text = "Data Inserted Successfully...";
@@ -86,8 +108,14 @@ namespace AddressBook.AdminPanel.Country
                     txtCountryCapital.Text = "";
 
                     txtCountryCode.Focus();
+
+                    #endregion Add-Mode
                 }
+
+                #endregion Add-Mode / Edit-Mode
+
             }
+            #region Exception Handling
             catch (SqlException sqlEx) 
             {
                 Response.Write("Error: " + sqlEx.Message);
@@ -96,6 +124,9 @@ namespace AddressBook.AdminPanel.Country
             {
                 Response.Write("Error: " + ex.Message);
             }
+            #endregion Exception Handling
+
+            #region Close Connection
             finally
             {
                 if (connObj.State == ConnectionState.Open)
@@ -103,14 +134,24 @@ namespace AddressBook.AdminPanel.Country
                     connObj.Close();
                 }
             }
-        }
+            #endregion Close Connection
 
+        }
+        #endregion Button : Save
+
+        #region Fill Controls On Edit
         private void FillControls(SqlString CountryCode)
         {
+            #region Establish Connection
+
             SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
+
+            #endregion Establish Connection
 
             try
             {
+                #region Connection and Command Object
+
                 if (connObj.State != ConnectionState.Open)
                 {
                     connObj.Open();
@@ -120,13 +161,18 @@ namespace AddressBook.AdminPanel.Country
 
                 cmdObj.CommandType = CommandType.StoredProcedure;
 
+                #endregion Connection and Command Object
+
+                #region Store Procedure, Parameters and Execute
                 cmdObj.CommandText = "PR_Country_SelectByPK";
 
                 cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode.ToString().Trim());
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
+                #endregion Store Procedure, Parameters and Execute
 
-                if(sdrObj.HasRows)
+                #region Assign Values to Controls
+                if (sdrObj.HasRows)
                 {
                     while (sdrObj.Read())
                     {
@@ -150,9 +196,11 @@ namespace AddressBook.AdminPanel.Country
                 {
                     lblMsj.Text += "No Data for selected Country : " + CountryCode.ToString();
                 }
+                #endregion Assign Values to Controls
 
             }
-            catch(SqlException sqlEx)
+            #region Exception Handling
+            catch (SqlException sqlEx)
             {
                 Response.Write("Sql Exception: " + sqlEx.Message);
             }
@@ -160,6 +208,9 @@ namespace AddressBook.AdminPanel.Country
             {
                 Response.Write("Error: " + ex.Message);
             }
+            #endregion Exception Handling
+
+            #region Close Connection
             finally
             {
                 if(connObj.State == ConnectionState.Open)
@@ -167,6 +218,17 @@ namespace AddressBook.AdminPanel.Country
                     connObj.Close();
                 }
             }
+            #endregion Close Connection
+
         }
+        #endregion Fill Controls On Edit
+
+        #region Button : Cancel
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AdminPanel/Country/CountryList.aspx");
+        }
+        #endregion Button : Cancel
+
     }
 }

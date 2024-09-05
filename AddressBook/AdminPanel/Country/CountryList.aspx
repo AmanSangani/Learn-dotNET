@@ -31,7 +31,7 @@
                                 CommandName="DeleteRecord" CommandArgument=<%# Eval("CountryCode").ToString() %>/>
                             <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
                                 NavigateUrl=<%# "~/AdminPanel/Country/CountryAddEdit.aspx?CountryCode=" + Eval("CountryCode").ToString().Trim()  %>
-                                CommandName="DeleteRecord" CommandArgument=<%# Eval("CountryCode").ToString() %>></asp:HyperLink>
+                                CommandName="EditRecord" CommandArgument=<%# Eval("CountryCode").ToString() %>></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
 

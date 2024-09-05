@@ -16,6 +16,7 @@ namespace AddressBook.AdminPanel.Country
 {
     public partial class CountryList : System.Web.UI.Page
     {
+        #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,10 +24,12 @@ namespace AddressBook.AdminPanel.Country
                 FillGridView();
             }
         }
+        #endregion Page Load
 
+        #region FillGridView
         private void FillGridView()
         {
-            // Step-1: Establish Connection--------------------------------------------------------------------------------------
+            #region Establish Connection
             SqlConnection connObj = new SqlConnection();
 
             // Option 1: Using Windows Authentication
@@ -35,14 +38,13 @@ namespace AddressBook.AdminPanel.Country
             // Option 2: Using SQL Server Authentication
             // connObj.ConnectionString = "data source=AMAN;initial catalog=AddressBook;Integrated Security=False;User ID=yourUsername;Password=yourPassword;";
 
+            #endregion Establish Connection
+
             try
             {
+                #region Connection and Command Object
                 //Open the Connection
                 connObj.Open();
-
-
-                //Step-2 : Do Your Work--------------------------------------------------------------------------------------
-
 
                 //Prepare the Command Object
                 SqlCommand cmdObj = new SqlCommand();
@@ -55,6 +57,9 @@ namespace AddressBook.AdminPanel.Country
                 //cmdObj.CommandType = CommandType.TableDirect;
                 //cmdObj.CommandType = CommandType.Text;
 
+                #endregion Connection and Command Object
+
+                #region Store Procedure and Read/Bind Data
                 //Write Query / Store Procedure
                 cmdObj.CommandText = "PR_Country_SelectAll";
 
@@ -71,7 +76,10 @@ namespace AddressBook.AdminPanel.Country
                 // Define where to Display Data
                 gvCountry.DataSource = sdrObj;
                 gvCountry.DataBind();
+
+                #endregion Store Procedure and Read/Bind Data
             }
+            #region Exception Handling
             catch (SqlException sqlEx)
             {
                 Response.Write("SQL Error: " + sqlEx.Message);
@@ -80,52 +88,66 @@ namespace AddressBook.AdminPanel.Country
             {
                 Response.Write("Error: " + ex.Message);
             }
+            #endregion Exception Handling
+
+            #region Close Connection
             finally
             {
                 // Close the Connection
                 connObj.Close();
             }
-        }
+            #endregion Close Connection
 
+        }
+        #endregion FillGridView
+
+        #region Row-Command
         protected void gvCountry_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName == "DeleteRecord")
+            #region Delete Record
+            if (e.CommandName == "DeleteRecord")
             {
                 if(e.CommandArgument != "")
                 {
                     DeleteCountryRecord(e.CommandArgument.ToString().Trim());
                 }
             }
-            if (e.CommandName == "EditRecord")
-            {
-                if (e.CommandArgument != "")
-                {
-                    EditCountryRecord();
-                }
-            }
+            #endregion Delete Record
         }
+        #endregion Row-Command
 
+        #region Delete Country Record
         private void DeleteCountryRecord(SqlString CountryCode)
         {
+            #region Establish Connection
             SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
+            #endregion Establish Connection
 
             try
             {
+                #region Connection and Command Object
                 connObj.Open();
 
                 SqlCommand cmdObj = connObj.CreateCommand();
 
                 cmdObj.CommandType = CommandType.StoredProcedure;
 
+                #endregion Connection and Command Object
+
+                #region Store Procedure, Parameters and Execute
                 cmdObj.CommandText = "PR_Country_DeleteByPK";
 
                 cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode);
 
                 cmdObj.ExecuteNonQuery();
 
+                //Recall function to fill the updated data
                 FillGridView();
 
+                #endregion Store Procedure, Parameters and Execute
+
             }
+            #region Exception Handling
             catch (SqlException sqlEx)
             {
                 Response.Write("SQL Error: " + sqlEx.Message);
@@ -134,15 +156,17 @@ namespace AddressBook.AdminPanel.Country
             {
                 Response.Write("Error: " + ex.Message);
             }
+            #endregion Exception Handling
+
+            #region Close Connection
             finally
             {
                 connObj.Close();
             }
-        }
-
-        private void EditCountryRecord()
-        {
+            #endregion Close Connection
 
         }
+        #endregion Delete Country Record
+
     }
 }
