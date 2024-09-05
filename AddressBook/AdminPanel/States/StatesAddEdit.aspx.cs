@@ -19,6 +19,11 @@ namespace AddressBook.AdminPanel.States
             if (!Page.IsPostBack)
             {
                 FillDropDownList();
+
+                if (Request.QueryString["StateCode"] != null)
+                {
+                    FillControls(Request.QueryString["StateCode"].ToString().Trim());
+                }
             }
         }
         #endregion Page Load
@@ -41,11 +46,11 @@ namespace AddressBook.AdminPanel.States
 
                 cmdObj.CommandType = CommandType.StoredProcedure;
 
-                cmdObj.CommandText = "PR_Country_SelectForDropDownList";
-
                 #endregion Connection And Command
 
-                #region Data Read and Bind
+                #region Store Procedure, Execute, Data Read and Bind
+                
+                cmdObj.CommandText = "PR_Country_SelectForDropDownList";
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
@@ -59,7 +64,7 @@ namespace AddressBook.AdminPanel.States
 
                 ddlCountryCode.Items.Insert(0, new ListItem("Select Country", "-1"));
 
-                #endregion Data Read and Bind
+                #endregion Store Procedure, Execute, Data Read and Bind
 
             }
             #region Exception Handling
@@ -82,6 +87,93 @@ namespace AddressBook.AdminPanel.States
 
         }
         #endregion Fill DropDown List
+
+        #region FillControls on Edit
+        private void FillControls(String StateCode)
+        {
+            #region Establish Connection
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
+            #endregion Establish Connection
+
+            try
+            {
+                #region Connection and Command Object
+
+                if(connObj.State != ConnectionState.Open)
+                {
+                    connObj.Open();
+                }
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+
+                cmdObj.CommandType = CommandType.StoredProcedure;
+
+                #endregion Connection and Command Object
+
+                #region Store Procedure, Parameter and Execute 
+
+                cmdObj.CommandText = "PR_State_SelectByPK";
+
+                cmdObj.Parameters.AddWithValue("@StateCode", StateCode);
+
+                SqlDataReader sdrObj = cmdObj.ExecuteReader();
+
+                #endregion Store Procedure, Parameter and Execute 
+
+                #region Assign Value to Controls
+
+                if (sdrObj.HasRows)
+                {
+                    while(sdrObj.Read())
+                    {
+                        if (!sdrObj["CountryCode"].Equals(DBNull.Value))
+                        {
+                            ddlCountryCode.SelectedValue = sdrObj["CountryCode"].ToString();
+                            ddlCountryCode.Enabled = false;
+                        }
+                        if (!sdrObj["StateCode"].Equals(DBNull.Value))
+                        {
+                            txtStateCode.Text = sdrObj["StateCode"].ToString();
+                            txtStateCode.Enabled = false;
+                        }
+                        if (!sdrObj["StateName"].Equals(DBNull.Value))
+                        {
+                            txtStateName.Text = sdrObj["StateName"].ToString();
+                        }
+                        if (!sdrObj["StateCapital"].Equals(DBNull.Value))
+                        {
+                            txtStateCapital.Text = sdrObj["StateCapital"].ToString();
+                        }
+                        break;
+                    }
+                }
+
+                #endregion Assign Value to Controls
+
+            }
+            #region Exception Handling
+            catch (SqlException sqlEx)
+            {
+                Response.Write("SQL Error: " + sqlEx.Message);
+            }
+            catch(Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            #endregion Exception Handling
+
+            #region Close Connection
+            finally
+            {
+                if(connObj.State == ConnectionState.Open)
+                {
+                    connObj.Close();
+                }
+            }
+            #endregion Close Connection
+
+        }
+        #endregion FillControls on Edit
 
         #region Button : Save
         protected void btnSave_Click(object sender, EventArgs e)
@@ -134,23 +226,53 @@ namespace AddressBook.AdminPanel.States
                 cmdObj.CommandType = CommandType.StoredProcedure;
                 #endregion Connection and Command Objects
 
-                #region Store Procedure, Parameters and Execute
-
-                cmdObj.CommandText = "PR_States_Insert";
-
+                #region Parameters
                 strStateCode = txtStateCode.Text.Trim();
                 strStateName = txtStateName.Text.Trim();
                 strStateCapital = txtStateCapital.Text.Trim();
-                strCountryCode = ddlCountryCode.SelectedValue.Trim();
 
                 cmdObj.Parameters.AddWithValue("@StateCode", strStateCode);
                 cmdObj.Parameters.AddWithValue("@StateName", strStateName);
                 cmdObj.Parameters.AddWithValue("@StateCapital", strStateCapital);
-                cmdObj.Parameters.AddWithValue("@CountryCode", strCountryCode);
+                #endregion Parameters
 
-                cmdObj.ExecuteNonQuery();
+                #region Add-Mode / Edit-Mode
 
-                #endregion Store Procedure, Parameters and Execute
+                if (Request.QueryString["StateCode"] != null)
+                {
+                    #region Edit-Mode
+
+                    cmdObj.CommandText = "PR_State_UpdateByPK";
+
+                    cmdObj.ExecuteNonQuery();
+                    
+                    Response.Redirect("~/AdminPanel/States/StatesList.aspx");
+
+                    #endregion Edit-Mode
+                }
+                else
+                {
+                    #region Add-Mode
+
+                    strCountryCode = ddlCountryCode.SelectedValue.Trim();
+                    cmdObj.Parameters.AddWithValue("@CountryCode", strCountryCode);
+
+                    cmdObj.CommandText = "PR_States_Insert";
+
+                    cmdObj.ExecuteNonQuery();
+
+                    lblMsj.Text = "Data Inserted Successfully...";
+
+                    txtStateCode.Text = "";
+                    txtStateName.Text = "";
+                    txtStateCapital.Text = "";
+
+                    txtStateCode.Focus();
+
+                    #endregion Add-Mode
+                }
+
+                #endregion Add-Mode / Edit-Mode
 
             }
             #region Exception Handling
@@ -168,19 +290,19 @@ namespace AddressBook.AdminPanel.States
             finally
             {
                 connObj.Close();
-                lblMsj.Text = "Data Inserted Successfully...";
-
-                txtStateCode.Text = "";
-                txtStateName.Text = "";
-                txtStateCapital.Text = "";
-
-                txtStateCode.Focus();
             }
             #endregion Close Connection
 
         }
 
         #endregion Button : Save
+
+        #region Button : Cancel
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/AdminPanel/States/StatesList.aspx");
+        }
+        #endregion Button : Cancel
 
     }
 }
