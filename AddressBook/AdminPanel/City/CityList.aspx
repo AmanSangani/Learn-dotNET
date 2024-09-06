@@ -17,8 +17,19 @@
     </div>
     <div class="row">
         <div class="col-md-12 m-2 text-white">
-            <asp:GridView ID="gvCity" runat="server">
+            <asp:GridView ID="gvCity" runat="server" OnRowCommand="gvCity_RowCommand">
                 <Columns>
+
+                    <asp:TemplateField HeaderText="Modify Data">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm mr-3" runat="server" Text="Delete" 
+                                CommandName="DeleteRecord" CommandArgument=<%# Eval("CityCode").ToString() %>/>
+                            <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
+                                NavigateUrl=<%# "~/AdminPanel/City/CityAddEdit.aspx?CityCode=" + Eval("CityCode").ToString().Trim()  %>
+                                CommandName="EditRecord" CommandArgument=<%# Eval("CityCode").ToString() %>></asp:HyperLink>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                     <asp:BoundField DataField="CityCode" HeaderText="Code" />
                     <asp:BoundField DataField="CityName" HeaderText="City" />
                     <asp:BoundField DataField="StateName" HeaderText="State" />

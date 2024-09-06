@@ -26,7 +26,7 @@
                                 CommandName="DeleteRecord" CommandArgument=<%# Eval("StateCode").ToString() %>/>
                             <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
                                 NavigateUrl=<%# "~/AdminPanel/States/StatesAddEdit.aspx?StateCode=" + Eval("StateCode").ToString().Trim()  %>
-                                CommandName="DeleteRecord" CommandArgument=<%# Eval("StateCode").ToString() %>></asp:HyperLink>
+                                CommandName="EditRecord" CommandArgument=<%# Eval("StateCode").ToString() %>></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
 
