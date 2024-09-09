@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminPanel\Auth\Login.aspx" />
+    <Content Include="AdminPanel\Auth\Register.aspx" />
     <Content Include="AdminPanel\City\CityAddEdit.aspx" />
     <Content Include="AdminPanel\City\CityList.aspx" />
     <Content Include="AdminPanel\Country\CountryAddEdit.aspx" />
@@ -87,6 +89,20 @@
     <Content Include="index.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminPanel\Auth\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Auth\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Auth\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Auth\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminPanel\City\CityAddEdit.aspx.cs">
       <DependentUpon>CityAddEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

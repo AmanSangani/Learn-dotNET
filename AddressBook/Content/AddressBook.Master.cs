@@ -11,7 +11,16 @@ namespace AddressBook.Content
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserID"]  == null)
+            {
+                Response.Redirect("~/AdminPanel/Auth/Login.aspx");
+            }
+        }
 
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/AdminPanel/Auth/Login.aspx");
         }
     }
 }

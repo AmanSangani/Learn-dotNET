@@ -21,6 +21,9 @@
             
              <div>
                  <h1>Address Book</h1>
+                 <div class="text-right mb-3">
+                     <asp:Button ID="btnLogout" CssClass="btn btn-danger" runat="server" Text="Logout" OnClick="btnLogout_Click" />
+                 </div>
                  <nav class="navbar navbar-expand-lg navbar-light bg-dark rounded">
                      <asp:HyperLink ID="hlCountryList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Country/CountryList.aspx" Target="_self">Country</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
