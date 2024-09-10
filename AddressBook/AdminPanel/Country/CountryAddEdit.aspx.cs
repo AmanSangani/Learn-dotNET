@@ -77,6 +77,7 @@ namespace AddressBook.AdminPanel.Country
                 strCountryName = txtCountryName.Text.Trim();
                 strCountryCapital = txtCountryCapital.Text.Trim();
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@CountryCode", strCountryCode);
                 cmdObj.Parameters.AddWithValue("@CountryName", strCountryName);
                 cmdObj.Parameters.AddWithValue("@CountryCapital", strCountryCapital);
@@ -89,7 +90,7 @@ namespace AddressBook.AdminPanel.Country
                 {
                     #region Edit-Mode
 
-                    cmdObj.CommandText = "PR_Country_UpdateByPK";
+                    cmdObj.CommandText = "PR_Country_UpdateByPK_UserID";
                     cmdObj.ExecuteNonQuery();
                     Response.Redirect("~/AdminPanel/Country/CountryList.aspx");
 
@@ -164,8 +165,9 @@ namespace AddressBook.AdminPanel.Country
                 #endregion Connection and Command Object
 
                 #region Store Procedure, Parameters and Execute
-                cmdObj.CommandText = "PR_Country_SelectByPK";
+                cmdObj.CommandText = "PR_Country_SelectByPK_UserID";
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode.ToString().Trim());
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
