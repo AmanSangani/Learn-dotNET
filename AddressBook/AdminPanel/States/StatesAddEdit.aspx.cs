@@ -52,6 +52,8 @@ namespace AddressBook.AdminPanel.States
                 
                 cmdObj.CommandText = "PR_Country_SelectForDropDownList";
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
+
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
                 if (sdrObj.HasRows)
@@ -112,9 +114,10 @@ namespace AddressBook.AdminPanel.States
 
                 #region Store Procedure, Parameter and Execute 
 
-                cmdObj.CommandText = "PR_State_SelectByPK";
+                cmdObj.CommandText = "PR_State_SelectByPK_UserID";
 
                 cmdObj.Parameters.AddWithValue("@StateCode", StateCode);
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
@@ -231,6 +234,7 @@ namespace AddressBook.AdminPanel.States
                 strStateName = txtStateName.Text.Trim();
                 strStateCapital = txtStateCapital.Text.Trim();
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@StateCode", strStateCode);
                 cmdObj.Parameters.AddWithValue("@StateName", strStateName);
                 cmdObj.Parameters.AddWithValue("@StateCapital", strStateCapital);
@@ -242,7 +246,7 @@ namespace AddressBook.AdminPanel.States
                 {
                     #region Edit-Mode
 
-                    cmdObj.CommandText = "PR_State_UpdateByPK";
+                    cmdObj.CommandText = "PR_State_UpdateByPK_UserID";
 
                     cmdObj.ExecuteNonQuery();
                     

@@ -51,7 +51,9 @@ namespace AddressBook.AdminPanel.States
                 #endregion Connection and Command Object
 
                 #region Store Procedure, Execute and Read/Bind Data
-                cmdObj.CommandText = "PR_States_SelectAll";
+                cmdObj.CommandText = "PR_States_SelectAllByUserID";
+
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
@@ -116,9 +118,10 @@ namespace AddressBook.AdminPanel.States
 
                 #region Store Procedure, Parameters and Execute
 
-                cmdObj.CommandText = "PR_State_DeleteByPK";
+                cmdObj.CommandText = "PR_State_DeleteByPK_UserID";
 
                 cmdObj.Parameters.AddWithValue("@StateCode", StateCode);
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
                 cmdObj.ExecuteNonQuery();
 
