@@ -59,7 +59,9 @@ namespace AddressBook.AdminPanel.Country
 
                 #region Store Procedure and Read/Bind Data
                 //Write Query / Store Procedure
-                cmdObj.CommandText = "PR_Country_SelectAll";
+                cmdObj.CommandText = "PR_Country_SelectAllByUserID";
+
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
                 //Step-3 : Read and Display Data--------------------------------------------------------------------------------------
 
@@ -67,7 +69,7 @@ namespace AddressBook.AdminPanel.Country
                 //cmdObj.ExecuteNonQuery(); //Insert/Update/Delete
                 //cmdObj.ExecuteScalar(); //Only one Scalar Value is return
                 //cmdObj.ExecuteXmlReader(); //XML Format Data
-
+                    
                 // Define which Command to Read
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
@@ -133,9 +135,10 @@ namespace AddressBook.AdminPanel.Country
                 #endregion Connection and Command Object
 
                 #region Store Procedure, Parameters and Execute
-                cmdObj.CommandText = "PR_Country_DeleteByPK";
+                cmdObj.CommandText = "PR_Country_DeleteByPK_UserID";
 
                 cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode);
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
                 cmdObj.ExecuteNonQuery();
 
