@@ -21,6 +21,9 @@
             
              <div>
                  <h1>Address Book</h1>
+                 <div class="text-left">
+                     <asp:Label ID="lblUsernameMsj" CssClass="text-white font-italic" runat="server"></asp:Label>
+                 </div>
                  <div class="text-right mb-3">
                      <asp:Button ID="btnLogout" CssClass="btn btn-danger" runat="server" Text="Logout" OnClick="btnLogout_Click" />
                  </div>
