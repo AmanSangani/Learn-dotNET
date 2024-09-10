@@ -17,9 +17,10 @@ namespace AddressBook.AdminPanel.Auth
 
         }
 
+        #region Button : Login
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if(txtUsername.Text != "" && txtPassword.Text != "")
+            if(txtUsername.Text != "" || txtPassword.Text != "")
             {
                 #region Establish Connection
 
@@ -96,6 +97,12 @@ namespace AddressBook.AdminPanel.Auth
                 }
                 #endregion Close Connection
             }
+            else
+            {
+                lblMessage.Text = "Enter Required Details...";
+            }
         }
+        #endregion Button : Login
+
     }
 }
