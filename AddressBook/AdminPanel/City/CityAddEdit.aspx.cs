@@ -51,6 +51,9 @@ namespace AddressBook.AdminPanel.City
                 #region Store procedure, Execute and Data Read/Bind
 
                 cmdObj.CommandText = "PR_Country_SelectForDropDownList";
+
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
+
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
                 
                 if (sdrObj.HasRows)
@@ -113,7 +116,10 @@ namespace AddressBook.AdminPanel.City
                 #region Store Procedure, Parameter, Execute and Read/Bind Data
 
                 cmdObj.CommandText = "PR_States_SelectForDropDownList";
+                
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@CountryCode", CountryCode.ToString());
+                
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
                 if (sdrObj.HasRows)
@@ -177,8 +183,9 @@ namespace AddressBook.AdminPanel.City
                 #endregion Connection and Command Object
 
                 #region Store Procedure, Parameters and Execute
-                cmdObj.CommandText = "PR_City_SelectByPK";
+                cmdObj.CommandText = "PR_City_SelectByPK_UserID";
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@CityCode", CityCode.ToString().Trim());
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
@@ -302,6 +309,7 @@ namespace AddressBook.AdminPanel.City
                 strCityCode = txtCityCode.Text.Trim();
                 strCityName = txtCityName.Text.Trim();
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@CityCode", strCityCode);
                 cmdObj.Parameters.AddWithValue("@CityName", strCityName);
 
@@ -313,7 +321,7 @@ namespace AddressBook.AdminPanel.City
                 {
                     #region Edit-Mode
 
-                    cmdObj.CommandText = "PR_City_UpdateByPK";
+                    cmdObj.CommandText = "PR_City_UpdateByPK_UserID";
                     cmdObj.ExecuteNonQuery();
                     Response.Redirect("~/AdminPanel/City/CityList.aspx");
 

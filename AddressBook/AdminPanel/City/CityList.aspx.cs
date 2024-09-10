@@ -54,7 +54,9 @@ namespace AddressBook.AdminPanel.City
 
                 #region Store Procedure, Execute and Read/Bind Data
 
-                cmdObj.CommandText = "PR_City_SelectAll";
+                cmdObj.CommandText = "PR_City_SelectAllByUserID";
+
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
@@ -135,8 +137,9 @@ namespace AddressBook.AdminPanel.City
 
                 #region Store Procedure, Execute and Read/Bind Data
 
-                cmdObj.CommandText = "PR_City_DeleteByPK";
+                cmdObj.CommandText = "PR_City_DeleteByPK_UserID";
 
+                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
                 cmdObj.Parameters.AddWithValue("@CityCode", CityCode);
 
                 cmdObj.ExecuteNonQuery();
