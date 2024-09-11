@@ -71,6 +71,8 @@
     <Content Include="AdminPanel\Auth\Register.aspx" />
     <Content Include="AdminPanel\City\CityAddEdit.aspx" />
     <Content Include="AdminPanel\City\CityList.aspx" />
+    <Content Include="AdminPanel\Contacts\ContactAddEdit.aspx" />
+    <Content Include="AdminPanel\Contacts\ContactList.aspx" />
     <Content Include="AdminPanel\Country\CountryAddEdit.aspx" />
     <Content Include="AdminPanel\Country\CountryList.aspx" />
     <Content Include="AdminPanel\States\StatesAddEdit.aspx" />
@@ -116,6 +118,20 @@
     </Compile>
     <Compile Include="AdminPanel\City\CityList.aspx.designer.cs">
       <DependentUpon>CityList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Contacts\ContactAddEdit.aspx.cs">
+      <DependentUpon>ContactAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Contacts\ContactAddEdit.aspx.designer.cs">
+      <DependentUpon>ContactAddEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Contacts\ContactList.aspx.cs">
+      <DependentUpon>ContactList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Contacts\ContactList.aspx.designer.cs">
+      <DependentUpon>ContactList.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdminPanel\Country\CountryAddEdit.aspx.cs">
       <DependentUpon>CountryAddEdit.aspx</DependentUpon>
@@ -174,6 +190,7 @@
     <Content Include="Content\js\bootstrap.min.js.map" />
     <Content Include="Content\AddressBook.Master" />
     <Content Include="App_Themes\Default\AllSkins.skin" />
+    <Content Include="Content\images\IMG_2658.HEIC" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

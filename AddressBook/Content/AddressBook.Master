@@ -38,6 +38,9 @@
 
                      <asp:HyperLink ID="hlCityList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/City/CityList.aspx">City</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                     <asp:HyperLink ID="hlContactList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Contacts/ContactList.aspx">Contacts</asp:HyperLink>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  </nav>
              </div>
 

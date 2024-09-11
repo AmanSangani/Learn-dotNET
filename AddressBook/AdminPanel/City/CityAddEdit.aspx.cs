@@ -339,7 +339,13 @@ namespace AddressBook.AdminPanel.City
 
                     cmdObj.ExecuteNonQuery();
 
+
                     lblMsj.Text = "Data Inserted Successfully...";
+
+                    txtCityCode.Text = "";
+                    txtCityName.Text = "";
+
+                    txtCityCode.Focus();
 
                     #endregion Add-Mode
                 }
@@ -365,13 +371,6 @@ namespace AddressBook.AdminPanel.City
                 {
                     connObj.Close();
                 }
-
-                lblMsj.Text = "Data Inserted Successfully...";
-
-                txtCityCode.Text = "";
-                txtCityName.Text = "";
-
-                txtCityCode.Focus();
             }
             #endregion Close Connection
 
