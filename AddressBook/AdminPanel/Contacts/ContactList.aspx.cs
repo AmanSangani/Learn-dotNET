@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace AddressBook.AdminPanel.Contacts
 {
@@ -113,7 +114,16 @@ namespace AddressBook.AdminPanel.Contacts
         #region Delete Image
         private void DeleteImage(String imagePath)
         {
+            FileInfo file = new FileInfo(Server.MapPath(imagePath));
 
+            if(file.Exists)
+            {
+                file.Delete();
+            }
+            else
+            {
+                lblMsj.Text = "File Not Available...";
+            }
         }
         #endregion Delete Image
 

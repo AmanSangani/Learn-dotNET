@@ -15,6 +15,9 @@
             <asp:HyperLink ID="hlContactAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/Contacts/ContactAddEdit.aspx" Target="_self">Add</asp:HyperLink>
         </div>
     </div>
+    <div>
+        <asp:Label ID="lblMsj" runat="server"></asp:Label>
+    </div>
     <div class="row">
         <div class="col-md-12 m-2 text-white">
             <asp:GridView ID="gvContact" runat="server" AllowSorting="True" AutoGenerateColumns="False" OnRowCommand="gvContact_RowCommand">
@@ -24,9 +27,9 @@
                         <ItemTemplate>
                             <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm mr-3" runat="server" Text="Delete" 
                                 CommandName="DeleteRecord" CommandArgument=<%# Eval("ContactID").ToString() + ";" + Eval("ContactImg").ToString() %>/>
-<%--                            <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
+                            <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
                                 NavigateUrl=<%# "~/AdminPanel/Contacts/ContactAddEdit.aspx?ContactID=" + Eval("ContactID").ToString()  %>
-                                CommandName="EditRecord" CommandArgument=<%# Eval("").ToString() %>></asp:HyperLink>--%>
+                                CommandName="EditRecord" CommandArgument=<%# Eval("ContactID").ToString() %>></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
 
