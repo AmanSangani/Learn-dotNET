@@ -124,7 +124,7 @@ namespace AddressBook.AdminPanel.Country
 
                 #region Add-Mode / Edit-Mode
 
-                if (Request.QueryString["CountryCode"] != null)
+                if (Page.RouteData.Values["OperationName"].ToString() == "Edit" && Page.RouteData.Values["CountryCode"] != null)
                 {
                     #region Edit-Mode
 
@@ -134,7 +134,7 @@ namespace AddressBook.AdminPanel.Country
 
                     #endregion Edit-Mode
                 }
-                else
+                else if(Page.RouteData.Values["OperationName"].ToString() == "Add")
                 {
                     #region Add-Mode
                     
