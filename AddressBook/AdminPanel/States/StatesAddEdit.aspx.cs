@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Configuration;
+using AddressBook.Helpers;
 
 namespace AddressBook.AdminPanel.States
 {
@@ -31,62 +28,7 @@ namespace AddressBook.AdminPanel.States
         #region Fill DropDown List
         private void FillDropDownList()
         {
-            #region Establish Connection
-            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
-            #endregion Establish Connection
-
-            try
-            {
-
-                #region Connection And Command
-
-                connObj.Open();
-
-                SqlCommand cmdObj = connObj.CreateCommand();
-
-                cmdObj.CommandType = CommandType.StoredProcedure;
-
-                #endregion Connection And Command
-
-                #region Store Procedure, Execute, Data Read and Bind
-                
-                cmdObj.CommandText = "PR_Country_SelectForDropDownList";
-
-                cmdObj.Parameters.AddWithValue("@UserID", Session["UserID"]);
-
-                SqlDataReader sdrObj = cmdObj.ExecuteReader();
-
-                if (sdrObj.HasRows)
-                {
-                    ddlCountryCode.DataSource = sdrObj;
-                    ddlCountryCode.DataValueField = "CountryCode";
-                    ddlCountryCode.DataTextField = "CountryName";
-                    ddlCountryCode.DataBind();
-                }
-
-                ddlCountryCode.Items.Insert(0, new ListItem("Select Country", "-1"));
-
-                #endregion Store Procedure, Execute, Data Read and Bind
-
-            }
-            #region Exception Handling
-            catch (SqlException sqlEx)
-            {
-                Response.Write("Error: " + sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                Response.Write("Error: " + ex.Message);
-            }
-            #endregion Exception Handling
-
-            #region Close Connection
-            finally
-            {
-                connObj.Close();
-            }
-            #endregion Close Connection
-
+            CommonDropDownList.FillCountryDropDownList(ddlCountryCode, Session["UserID"].ToString());
         }
         #endregion Fill DropDown List
 

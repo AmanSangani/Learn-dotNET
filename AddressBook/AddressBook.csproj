@@ -161,6 +161,7 @@
     <Compile Include="AdminPanel\States\StatesList.aspx.designer.cs">
       <DependentUpon>StatesList.aspx</DependentUpon>
     </Compile>
+    <Content Include="App_Code\CommonDropDownFillMethods.cs" />
     <Compile Include="Content\AddressBook.Master.cs">
       <DependentUpon>AddressBook.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +169,7 @@
     <Compile Include="Content\AddressBook.Master.designer.cs">
       <DependentUpon>AddressBook.Master</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CommonDropDownList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
