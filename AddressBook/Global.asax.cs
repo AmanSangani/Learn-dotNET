@@ -67,6 +67,10 @@ namespace AddressBook
             routes.MapPageRoute("AddressBookCityList", "AdminPanel/City/List", "~/AdminPanel/City/CityList.aspx");
             #endregion City Routes
 
+            #region Contact Routes
+            routes.MapPageRoute("AddressBookContactList", "AdminPanel/Contact/List", "~/AdminPanel/Contacts/ContactList.aspx");
+            #endregion Contact Routes
+
         }
 
     }

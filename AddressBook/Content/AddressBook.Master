@@ -30,16 +30,16 @@
                     </div>
                  </div>
                  <nav class="navbar navbar-expand-lg navbar-light bg-dark rounded">
-                     <asp:HyperLink ID="hlCountryList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Country/CountryList.aspx" Target="_self">Country</asp:HyperLink>
+                     <asp:HyperLink ID="hlCountryList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Country/list" Target="_self">Country</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                     <asp:HyperLink ID="hlStateList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/States/StatesList.aspx" Target="_self">State</asp:HyperLink>
+                     <asp:HyperLink ID="hlStateList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/State/list" Target="_self">State</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                     <asp:HyperLink ID="hlCityList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/City/CityList.aspx">City</asp:HyperLink>
+                     <asp:HyperLink ID="hlCityList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/City/list">City</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                     <asp:HyperLink ID="hlContactList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Contacts/ContactList.aspx">Contacts</asp:HyperLink>
+                     <asp:HyperLink ID="hlContactList" runat="server" CssClass="navbar-brand text-white" NavigateUrl="~/AdminPanel/Contact/list">Contacts</asp:HyperLink>
                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  </nav>
              </div>
