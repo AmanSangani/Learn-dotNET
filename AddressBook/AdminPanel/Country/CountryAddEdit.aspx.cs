@@ -130,7 +130,7 @@ namespace AddressBook.AdminPanel.Country
 
                     cmdObj.CommandText = "PR_Country_UpdateByPK_UserID";
                     cmdObj.ExecuteNonQuery();
-                    Response.Redirect("~/AdminPanel/Country/CountryList.aspx");
+                    Response.Redirect("~/AdminPanel/Country/list");
 
                     #endregion Edit-Mode
                 }
@@ -266,7 +266,7 @@ namespace AddressBook.AdminPanel.Country
         #region Button : Cancel
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AdminPanel/Country/CountryList.aspx");
+            Response.Redirect("~/AdminPanel/Country/list");
         }
         #endregion Button : Cancel
 
