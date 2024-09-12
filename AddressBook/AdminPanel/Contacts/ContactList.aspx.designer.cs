@@ -33,12 +33,12 @@ namespace AddressBook.AdminPanel.Contacts
         protected global::System.Web.UI.WebControls.Label lblMsj;
 
         /// <summary>
-        /// gvContact control.
+        /// dlContact control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvContact;
+        protected global::System.Web.UI.WebControls.DataList dlContact;
     }
 }

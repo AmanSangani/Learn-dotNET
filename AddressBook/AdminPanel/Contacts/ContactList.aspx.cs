@@ -60,8 +60,8 @@ namespace AddressBook.AdminPanel.Contacts
 
                 SqlDataReader sdrObj = cmdObj.ExecuteReader();
 
-                gvContact.DataSource = sdrObj;
-                gvContact.DataBind();
+                dlContact.DataSource = sdrObj;
+                dlContact.DataBind();
 
                 #endregion Store Procedure, Execute and Read/Bind Data
             }
@@ -89,7 +89,7 @@ namespace AddressBook.AdminPanel.Contacts
         }
         #endregion FillContactData
 
-        #region Row Command
+        #region Row Command for GridView
         protected void gvContact_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             #region Delete Record
@@ -109,7 +109,28 @@ namespace AddressBook.AdminPanel.Contacts
             }
             #endregion Delete Record
         }
-        #endregion Row Command
+        #endregion Row Command for GridView
+
+        #region  Row Command for DataList
+        protected void dlContact_ItemCommand(object source, DataListCommandEventArgs e)
+        {
+            #region Delete Record
+            if (e.CommandName == "DeleteRecord")
+            {
+                if (e.CommandArgument.ToString().Trim() != "")
+                {
+                    string[] args = e.CommandArgument.ToString().Split(';');
+                    string ContactID = args[0];
+                    string imagePath = args.Length > 1 ? args[1] : string.Empty;
+
+                    DeleteImage(imagePath);
+                    DeleteContactRecord(ContactID);
+                    FillContactData();
+                }
+            }
+            #endregion Delete Record
+        }
+        #endregion Row Command for DataList
 
         #region Delete Image
         private void DeleteImage(String imagePath)
