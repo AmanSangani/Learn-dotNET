@@ -12,7 +12,7 @@
             <h2>List of Countries</h2>
         </div>
         <div class="col-md-4 text-right">
-            <asp:HyperLink ID="hlCountryAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/Country/CountryAddEdit.aspx" Target="_self">Add</asp:HyperLink> 
+            <asp:HyperLink ID="hlCountryAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/Country/Add" Target="_self">Add</asp:HyperLink> 
         </div>
     </div>
     <div class="row">
@@ -30,7 +30,7 @@
                             <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm mr-3" runat="server" Text="Delete" 
                                 CommandName="DeleteRecord" CommandArgument=<%# Eval("CountryCode").ToString() %>/>
                             <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
-                                NavigateUrl=<%# "~/AdminPanel/Country/CountryAddEdit.aspx?CountryCode=" + Eval("CountryCode").ToString().Trim()  %>
+                                NavigateUrl=<%# "~/AdminPanel/Country/Edit/" + Eval("CountryCode").ToString().Trim()  %>
                                 CommandName="EditRecord" CommandArgument=<%# Eval("CountryCode").ToString() %>></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>

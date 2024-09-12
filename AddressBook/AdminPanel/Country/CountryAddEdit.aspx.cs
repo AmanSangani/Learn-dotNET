@@ -19,10 +19,48 @@ namespace AddressBook.AdminPanel.Country
         {
             if (!Page.IsPostBack)
             {
-                if (Request.QueryString["CountryCode"] != null)
+                #region Routes
+
+                //if (Request.QueryString["CountryCode"] != null)
+                //{
+                //    FillControls(Request.QueryString["CountryCode"].ToString().Trim());
+                //}
+
+                if (Page.RouteData.Values["OperationName"] != null)
                 {
-                    FillControls(Request.QueryString["CountryCode"].ToString().Trim());
+                    #region Add Route
+                    if (Page.RouteData.Values["OperationName"].ToString() == "Add")
+                    {
+                        lblAddEdit.Text = Page.RouteData.Values["OperationName"].ToString();
+                    }
+                    #endregion Add Route
+
+                    #region Edit Route
+                    else if (Page.RouteData.Values["OperationName"].ToString() == "Edit")
+                    {
+                        if (Page.RouteData.Values["CountryCode"] != null)
+                        {
+                            lblAddEdit.Text += " | CountryCode : " + Page.RouteData.Values["CountryCode"].ToString();
+                            FillControls(Page.RouteData.Values["CountryCode"].ToString().Trim());
+                        }
+                        else
+                        {
+                            Response.Redirect("~/AdminPanel/Country/List");
+                        }
+                    }
+                    #endregion Edit Route
+
+                    #region Invalid Route
+                    else
+                    {
+                        Response.Redirect("~/AdminPanel/Country/List");
+                    }
+                    #endregion Invalid Route
+
                 }
+
+                #endregion Routes
+
             }
         }
 

@@ -87,6 +87,7 @@
     <Content Include="Content\js\bootstrap.bundle.min.js" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
   </ItemGroup>
@@ -168,6 +169,9 @@
     </Compile>
     <Compile Include="Content\AddressBook.Master.designer.cs">
       <DependentUpon>AddressBook.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CommonDropDownList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
