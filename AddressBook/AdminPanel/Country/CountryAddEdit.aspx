@@ -36,7 +36,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-center mt-5">
-            <asp:Button ID="btnSave" CssClass=" btn btn-success mr-2" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="SaveValidation" />
+            <asp:Button ID="btnSave" CssClass=" btn btn-success  mr-2" runat="server" Text="Save" OnClick="btnSave_Click" ValidationGroup="SaveValidation" />
             <asp:Button ID="btnCancel" CssClass=" btn btn-danger" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
         </div>
     </div>
