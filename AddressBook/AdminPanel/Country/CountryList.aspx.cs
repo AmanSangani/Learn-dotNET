@@ -107,7 +107,7 @@ namespace AddressBook.AdminPanel.Country
             #region Delete Record
             if (e.CommandName == "DeleteRecord")
             {
-                if(e.CommandArgument != "")
+                if(e.CommandArgument.ToString() != "")
                 {
                     DeleteCountryRecord(e.CommandArgument.ToString().Trim());
                 }
