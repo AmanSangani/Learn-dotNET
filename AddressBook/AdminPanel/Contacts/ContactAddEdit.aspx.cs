@@ -102,7 +102,7 @@ namespace AddressBook.AdminPanel.Contacts
 
                 #region Add-Mode / Edit-Mode
 
-                if (Request.QueryString["CityCode"] != null)
+                if (Page.RouteData.Values["OperationName"].ToString() == "Edit" && Page.RouteData.Values["ContactID"] != null)
                 {
                     #region Edit-Mode
 
@@ -156,10 +156,12 @@ namespace AddressBook.AdminPanel.Contacts
         }
         #endregion Button : Save
 
-
+        #region Button : Cancel
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/AdminPanel/Contact/list");
         }
+        #endregion Button : Cancel
+
     }
 }

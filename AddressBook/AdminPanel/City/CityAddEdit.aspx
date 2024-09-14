@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="server">
     <div class="row">
         <div class="col-md-12 m-2">
-            <h2>City Add / Edit</h2>
+            <asp:Label ID="lblAddEdit" runat="server"></asp:Label>
         </div>
     </div>
     <div class="row">

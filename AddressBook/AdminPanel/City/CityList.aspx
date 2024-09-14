@@ -12,7 +12,7 @@
             <h2>List of City</h2>
         </div>
         <div class="col-md-4 text-right">
-            <asp:HyperLink ID="hlCityAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/City/CityAddEdit.aspx" Target="_self">Add</asp:HyperLink>
+            <asp:HyperLink ID="hlCityAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/City/Add" Target="_self">Add</asp:HyperLink>
         </div>
     </div>
     <div class="row">
@@ -25,7 +25,7 @@
                             <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm mr-3" runat="server" Text="Delete" 
                                 CommandName="DeleteRecord" CommandArgument=<%# Eval("CityCode").ToString() %>/>
                             <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
-                                NavigateUrl=<%# "~/AdminPanel/City/CityAddEdit.aspx?CityCode=" + Eval("CityCode").ToString().Trim()  %>
+                                NavigateUrl=<%# "~/AdminPanel/City/Edit/" + Eval("CityCode").ToString().Trim()  %>
                                 CommandName="EditRecord" CommandArgument=<%# Eval("CityCode").ToString() %>></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>

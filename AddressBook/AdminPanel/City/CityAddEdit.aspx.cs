@@ -21,10 +21,44 @@ namespace AddressBook.AdminPanel.City
             if (!Page.IsPostBack)
             {
                 FillCountryDropDownList();
-                if(Request.QueryString["CityCode"] != null)
+
+                #region Routes
+
+                if (Page.RouteData.Values["OperationName"] != null)
                 {
-                    FillControls(Request.QueryString["CityCode"].ToString().Trim());
+                    #region Add Route
+                    if (Page.RouteData.Values["OperationName"].ToString() == "Add")
+                    {
+                        lblAddEdit.Text = Page.RouteData.Values["OperationName"].ToString();
+                    }
+                    #endregion Add Route
+
+                    #region Edit Route
+                    else if (Page.RouteData.Values["OperationName"].ToString() == "Edit")
+                    {
+                        if (Page.RouteData.Values["CityCode"] != null)
+                        {
+                            lblAddEdit.Text += " | CityCode : " + Page.RouteData.Values["CityCode"].ToString();
+                            FillControls(Page.RouteData.Values["CityCode"].ToString().Trim());
+                        }
+                        else
+                        {
+                            Response.Redirect("~/AdminPanel/City/List");
+                        }
+                    }
+                    #endregion Edit Route
+
+                    #region Invalid Route
+                    else
+                    {
+                        Response.Redirect("~/AdminPanel/Country/List");
+                    }
+                    #endregion Invalid Route
+
                 }
+
+                #endregion Routes
+
             }
         }
         #endregion Page Load
@@ -203,17 +237,17 @@ namespace AddressBook.AdminPanel.City
 
                 #region Add-Mode / Edit-Mode
 
-                if (Request.QueryString["CityCode"] != null)
+                if (Page.RouteData.Values["OperationName"].ToString() == "Edit" && Page.RouteData.Values["CityCode"] != null)
                 {
                     #region Edit-Mode
 
                     cmdObj.CommandText = "PR_City_UpdateByPK_UserID";
                     cmdObj.ExecuteNonQuery();
-                    Response.Redirect("~/AdminPanel/City/CityList.aspx");
+                    Response.Redirect("~/AdminPanel/City/List");
 
                     #endregion Edit-Mode
                 }
-                else
+                else if(Page.RouteData.Values["OperationName"].ToString() == "Add")
                 {
                     #region Add-Mode
 
@@ -282,7 +316,7 @@ namespace AddressBook.AdminPanel.City
         #region Button : Cancel
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AdminPanel/City/CityList.aspx");
+            Response.Redirect("~/AdminPanel/City/List");
         }
         #endregion Button : Cancel
 

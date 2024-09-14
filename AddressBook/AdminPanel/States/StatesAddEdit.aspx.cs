@@ -17,10 +17,39 @@ namespace AddressBook.AdminPanel.States
             {
                 FillDropDownList();
 
-                if (Request.QueryString["StateCode"] != null)
+                #region Routes
+                if (Page.RouteData.Values["OperationName"] != null)
                 {
-                    FillControls(Request.QueryString["StateCode"].ToString().Trim());
+                    #region Add Route
+                    if (Page.RouteData.Values["OperationName"].ToString() == "Add")
+                    {
+                        lblAddEdit.Text = Page.RouteData.Values["OperationName"].ToString();
+                    }
+                    #endregion Add Route
+
+                    #region Edit Route
+                    else if (Page.RouteData.Values["OperationName"].ToString() == "Edit")
+                    {
+                        if (Page.RouteData.Values["StateCode"] != null)
+                        {
+                            lblAddEdit.Text += " | StateCode : " + Page.RouteData.Values["StateCode"].ToString();
+                            FillControls(Page.RouteData.Values["StateCode"].ToString().Trim());
+                        }
+                        else
+                        {
+                            Response.Redirect("~/AdminPanel/State/List");
+                        }
+                    }
+                    #endregion Edit Route
+
+                    #region Invalid Route
+                    else
+                    {
+                        Response.Redirect("~/AdminPanel/State/List");
+                    }
+                    #endregion Invalid Route
                 }
+                #endregion Routes
             }
         }
         #endregion Page Load
@@ -184,7 +213,7 @@ namespace AddressBook.AdminPanel.States
 
                 #region Add-Mode / Edit-Mode
 
-                if (Request.QueryString["StateCode"] != null)
+                if (Page.RouteData.Values["OperationName"].ToString() == "Edit" && Page.RouteData.Values["StateCode"] != null)
                 {
                     #region Edit-Mode
 
@@ -192,11 +221,11 @@ namespace AddressBook.AdminPanel.States
 
                     cmdObj.ExecuteNonQuery();
                     
-                    Response.Redirect("~/AdminPanel/States/StatesList.aspx");
+                    Response.Redirect("~/AdminPanel/State/List");
 
                     #endregion Edit-Mode
                 }
-                else
+                else if(Page.RouteData.Values["OperationName"].ToString() == "Add")
                 {
                     #region Add-Mode
 
@@ -246,7 +275,7 @@ namespace AddressBook.AdminPanel.States
         #region Button : Cancel
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AdminPanel/States/StatesList.aspx");
+            Response.Redirect("~/AdminPanel/State/List");
         }
         #endregion Button : Cancel
 

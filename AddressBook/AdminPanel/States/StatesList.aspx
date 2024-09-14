@@ -12,7 +12,7 @@
             <h2>List of States</h2>
         </div>
         <div class="col-md-4 text-right">
-            <asp:HyperLink ID="hlStateAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/States/StatesAddEdit.aspx" Target="_self">Add</asp:HyperLink>
+            <asp:HyperLink ID="hlStateAdd" runat="server" CssClass="btn btn-dark" NavigateUrl="~/AdminPanel/State/Add" Target="_self">Add</asp:HyperLink>
         </div>
     </div>
     <div class="row">
@@ -25,7 +25,7 @@
                             <asp:LinkButton ID="btnDelete" CssClass="btn btn-danger btn-sm mr-3" runat="server" Text="Delete" 
                                 CommandName="DeleteRecord" CommandArgument=<%# Eval("StateCode").ToString() %>/>
                             <asp:HyperLink ID="hlEdit" CssClass="btn btn-primary btn-sm mr-0" runat="server" Text="Edit"
-                                NavigateUrl=<%# "~/AdminPanel/States/StatesAddEdit.aspx?StateCode=" + Eval("StateCode").ToString().Trim()  %>
+                                NavigateUrl=<%# "~/AdminPanel/State/Edit/" + Eval("StateCode").ToString().Trim()  %>
                                 CommandName="EditRecord" CommandArgument=<%# Eval("StateCode").ToString() %>></asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
