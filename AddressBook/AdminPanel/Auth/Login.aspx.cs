@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddressBook.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -49,10 +50,12 @@ namespace AddressBook.AdminPanel.Auth
 
                     #region Store Procedure, Parameters and Execute 
 
+                    String encryptPass = EncryptDecrypt.encrypt(txtPassword.Text.ToString());
+
                     cmdObj.CommandText = "PR_User_ValidateLogin";
 
                     cmdObj.Parameters.AddWithValue("@Username", txtUsername.Text);
-                    cmdObj.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmdObj.Parameters.AddWithValue("@Password", encryptPass);
 
                     SqlDataReader sdrObj = cmdObj.ExecuteReader();
 

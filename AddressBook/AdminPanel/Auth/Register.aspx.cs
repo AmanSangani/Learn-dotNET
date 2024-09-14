@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AddressBook.Helpers;
 
 namespace AddressBook.AdminPanel.Auth
 {
@@ -50,10 +51,12 @@ namespace AddressBook.AdminPanel.Auth
 
                     #region Store Procedure, Parameters and Execute 
 
+                    String encryptPass = EncryptDecrypt.encrypt(txtPassword.Text.ToString());
+
                     cmdObj.CommandText = "PR_User_Insert";
 
                     cmdObj.Parameters.AddWithValue("@Username", txtUsername.Text);
-                    cmdObj.Parameters.AddWithValue("@Password", txtPassword.Text);
+                    cmdObj.Parameters.AddWithValue("@Password", encryptPass);
                     cmdObj.Parameters.AddWithValue("@Email", txtEmail.Text);
                     cmdObj.Parameters.AddWithValue("@DisplayName", txtDisplayName.Text);
 
