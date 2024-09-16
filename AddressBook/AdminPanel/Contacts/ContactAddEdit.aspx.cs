@@ -183,11 +183,16 @@ namespace AddressBook.AdminPanel.Contacts
                 {
                     #region Add-Mode
 
+                    cmdObj.Parameters.Add("@ContactID", SqlDbType.Int, 4);
+                    cmdObj.Parameters["@ContactID"].Direction = ParameterDirection.Output;
+
                     cmdObj.CommandText = "PR_Contact_Insert";
 
                     cmdObj.ExecuteNonQuery();
 
-                    lblMsj.Text = "Data Inserted Successfully...";
+                    String ContactID = cmdObj.Parameters["@ContactID"].Value.ToString();
+
+                    lblMsj.Text = "Data Inserted Successfully...ContactID: " + ContactID;
 
                     txtContactName.Text = "";
                     
