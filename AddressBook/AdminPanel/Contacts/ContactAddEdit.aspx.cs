@@ -14,10 +14,77 @@ namespace AddressBook.AdminPanel.Contacts
 {
     public partial class ContactAddEdit : System.Web.UI.Page
     {
+        #region Page Load
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.IsPostBack)
+            {
+                ContactCategoryFill();
+            }
+        }
+        #endregion Page Load
+
+        #region Contact Category Fill
+
+        private void ContactCategoryFill()
+        {
+            #region Establish Connection
+            SqlConnection connObj = new SqlConnection(ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString);
+            #endregion Establish Connection
+
+            try
+            {
+                #region Connection and Command object
+                if (connObj.State != ConnectionState.Open)
+                {
+                    connObj.Open();
+                }
+
+                SqlCommand cmdObj = connObj.CreateCommand();
+
+
+                cmdObj.CommandType = CommandType.StoredProcedure;
+
+                #endregion Connection and Command object
+
+                #region Store Procedure, Execute and Read/Bind Data
+
+                cmdObj.CommandText = "PR_ContactCategory_SelectAll";
+
+                SqlDataReader sdrObj = cmdObj.ExecuteReader();
+
+                cblContactCategory.DataSource = sdrObj;
+                cblContactCategory.DataTextField = "ContactCategoryName";
+                cblContactCategory.DataValueField = "ContactCategoryID";
+                cblContactCategory.DataBind();
+
+                #endregion Store Procedure, Execute and Read/Bind Data
+
+            }
+            #region Exception Handling
+            catch (SqlException sqlEx)
+            {
+                Response.Write("Error: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            #endregion Exception Handling
+
+            #region Close Connection
+            finally
+            {
+                if (connObj.State == ConnectionState.Open)
+                {
+                    connObj.Close();
+                }
+            }
+            #endregion Close Connection
 
         }
+
+        #endregion Contact Category Fill
 
         #region Button : Save
         protected void btnSave_Click(object sender, EventArgs e)

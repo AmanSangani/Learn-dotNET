@@ -114,6 +114,24 @@ namespace AddressBook.AdminPanel.Contacts
         protected global::System.Web.UI.WebControls.FileUpload fuContactImg;
 
         /// <summary>
+        /// lblContactCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblContactCategory;
+
+        /// <summary>
+        /// cblContactCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList cblContactCategory;
+
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
