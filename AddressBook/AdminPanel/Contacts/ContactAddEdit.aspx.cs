@@ -124,7 +124,6 @@ namespace AddressBook.AdminPanel.Contacts
 
                 SqlCommand cmdObj = connObj.CreateCommand();
 
-
                 cmdObj.CommandType = CommandType.StoredProcedure;
 
                 #endregion Connection and Command object
@@ -190,7 +189,28 @@ namespace AddressBook.AdminPanel.Contacts
 
                     cmdObj.ExecuteNonQuery();
 
+                    #region Category wisw Contact Insert
+
                     String ContactID = cmdObj.Parameters["@ContactID"].Value.ToString();
+
+                    foreach( ListItem listCategory in cblContactCategory.Items)
+                    {
+                        if (listCategory.Selected)
+                        {
+                            SqlCommand cmdCategoryWiseContact = connObj.CreateCommand();
+
+                            cmdCategoryWiseContact.CommandType = CommandType.StoredProcedure;
+
+                            cmdCategoryWiseContact.Parameters.AddWithValue("@ContactID", ContactID);
+                            
+                            cmdCategoryWiseContact.Parameters.AddWithValue("@CategoryID", listCategory.Value.ToString());
+
+                            cmdCategoryWiseContact.CommandText = "PR_CategoryWiseContact_Insert";
+
+                            cmdCategoryWiseContact.ExecuteNonQuery();
+                        }
+                    }
+                    #endregion Category wisw Contact Insert
 
                     lblMsj.Text = "Data Inserted Successfully...ContactID: " + ContactID;
 

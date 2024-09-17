@@ -124,6 +124,7 @@ namespace AddressBook.AdminPanel.Contacts
                     string imagePath = args.Length > 1 ? args[1] : string.Empty;
 
                     DeleteImage(imagePath);
+                    DeleteContactWiseCategory(ContactID);
                     DeleteContactRecord(ContactID);
                     FillContactData();
                 }
@@ -147,6 +148,71 @@ namespace AddressBook.AdminPanel.Contacts
             }
         }
         #endregion Delete Image
+
+        #region Delete Contact wise Category Record
+
+        private void DeleteContactWiseCategory(string ContactID)
+        {
+            #region Establish Connection
+
+            SqlConnection connObj = new SqlConnection();
+
+            connObj.ConnectionString = ConfigurationManager.ConnectionStrings["AddressBookConnectionString"].ConnectionString;
+
+            #endregion Establish Connection
+
+            try
+            {
+                #region Connection and Command Object
+
+                if (connObj.State != ConnectionState.Open)
+                {
+                    connObj.Open();
+                }
+
+                SqlCommand cmdObj = new SqlCommand();
+
+                cmdObj.Connection = connObj;
+
+                cmdObj.CommandType = CommandType.StoredProcedure;
+
+                #endregion Connection and Command Object
+
+                #region Store Procedure, Execute and Read/Bind Data
+
+                cmdObj.CommandText = "PR_CategoryWiseContact_DeleteByContactID";
+
+                cmdObj.Parameters.AddWithValue("@ContactID", ContactID);
+
+                cmdObj.ExecuteNonQuery();
+
+                #endregion Store Procedure, Execute and Read/Bind Data
+
+            }
+
+            #region Exception Handling
+            catch (SqlException sqlEx)
+            {
+                Response.Write("SQL Error: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Response.Write("Error: " + ex.Message);
+            }
+            #endregion Exception Handling
+
+            #region Close Connection
+            finally
+            {
+                if (connObj.State == ConnectionState.Open)
+                {
+                    connObj.Close();
+                }
+            }
+            #endregion Close Connection
+        }
+
+        #endregion Delete Contact wise Category Record
 
         #region Delte Contact Record
         private void DeleteContactRecord(string ContactID)
