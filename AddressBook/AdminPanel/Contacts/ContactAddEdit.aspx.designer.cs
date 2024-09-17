@@ -15,6 +15,15 @@ namespace AddressBook.AdminPanel.Contacts
     {
 
         /// <summary>
+        /// lblAddEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAddEdit;
+
+        /// <summary>
         /// lblMsj control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,24 @@ namespace AddressBook.AdminPanel.Contacts
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvContactImg;
+
+        /// <summary>
+        /// imgContact control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgContact;
+
+        /// <summary>
+        /// hfContactImg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfContactImg;
 
         /// <summary>
         /// fuContactImg control.

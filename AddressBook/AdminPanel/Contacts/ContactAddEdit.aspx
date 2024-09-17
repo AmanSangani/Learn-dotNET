@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainContent" runat="server">
     <div class="row">
         <div class="col-md-12 m-2">
-            <h2>Contact Add / Edit</h2>
+            <h2>Contact <asp:Label ID="lblAddEdit" runat="server"></asp:Label></h2>
         </div>
     </div>
     <div class="row">
@@ -32,6 +32,8 @@
         <div class="col-md-4">
             <asp:Label ID="lblContactImg" runat="server" Text="Contact Image : "></asp:Label>
             <asp:RequiredFieldValidator ID="rfvContactImg" runat="server" ErrorMessage="**" ControlToValidate="fuContactImg" Display="Dynamic" ForeColor="Red" ValidationGroup="SaveData"></asp:RequiredFieldValidator>
+            <asp:Image ID="imgContact" runat="server" CssClass="img-thumbnail" Width="150px" Height="150px" />
+            <asp:HiddenField ID="hfContactImg" runat="server" />
             <asp:FileUpload ID="fuContactImg" CssClass="form-control" runat="server" />
         </div>
     </div>
